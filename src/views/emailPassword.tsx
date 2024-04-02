@@ -27,7 +27,7 @@ function EmailPassword() {
 
     if (emailData) {
       setTimeout(() => {
-        navigate("/starkbook-emailverifi");
+        navigate("/woody-emailverifi");
       }, 3000);
     }
   };
