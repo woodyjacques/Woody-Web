@@ -21,15 +21,15 @@ function Register() {
 
   const token = localStorage.getItem("ACCESS_TOKEN");
 
-  useEffect(() => {
-    if (token) {
-      navigate("/");
-    }
-  }, [token, navigate]);
+    useEffect(() => {
+        if (token) {
+            navigate("/woody-libros");
+        }
+    }, [token, navigate]);
 
-  if (token) {
-    return null;
-  }
+    if (token) {
+        return null;
+    }
 
   const handleSubmitRegister = async (event: FormEvent) => {
     const registrationSuccessful = await handleSubmitUsers(event, name, email,telefono, password, isVerified, setName, setEmail, setTelefono, setPassword, setisVerified);

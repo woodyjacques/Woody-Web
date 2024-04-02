@@ -10,6 +10,18 @@ function EmailPassword() {
 
   const navigate = useNavigate();
 
+  const token = localStorage.getItem("ACCESS_TOKEN");
+
+  useEffect(() => {
+    if (token) {
+      navigate("/woody-libros");
+    }
+  }, [token, navigate]);
+
+  if (token) {
+    return null;
+  }
+
   const handleSubmit = async (event: FormEvent) => {
     const emailData = await handleSubmitEmail(event, email, setEmail);
 

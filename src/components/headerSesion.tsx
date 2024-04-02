@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Modal } from "./toast";
 import { NavLink } from "react-router-dom";
 
-function Header() {
+function HeaderSesion() {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
   const navigate = useNavigate();
@@ -67,17 +67,6 @@ function Header() {
                     <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border rounded-lg  md:flex-row md:space-x-8 md:mt-0 md:border-0 bg-gray-800 md:bg-gray-900 border-gray-700">
                         <li>
                             <NavLink
-                                to="/"
-                                className={`block py-2 pl-3 pr-4 rounded ${location.pathname === "/"
-                                    ? "text-blue-700"
-                                    : "md:hover:text-blue-500"
-                                    } text-white hover:bg-gray-700 hover:text-white md:hover:bg-transparent border-gray-700`}
-                            >
-                                Inicio
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
                                 to="/woody-libros"
                                 className={`block py-2 pl-3 pr-4 rounded ${location.pathname.includes("/woody-libros")
                                     ? "text-blue-700"
@@ -129,5 +118,5 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderSesion;
 

@@ -15,13 +15,14 @@ function Sesion() {
     const [password, setPassword] = useState("");
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [showPassword, setShowPassword] = useState(false);
+
     const navigate = useNavigate();
 
     const token = localStorage.getItem("ACCESS_TOKEN");
 
     useEffect(() => {
         if (token) {
-            navigate("/");
+            navigate("/woody-libros");
         }
     }, [token, navigate]);
 
