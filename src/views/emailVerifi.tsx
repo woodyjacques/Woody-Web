@@ -11,7 +11,7 @@ function Emailverifi() {
                     <p className="mb-8 text-lg font-normal lg:text-xl sm:px-16 lg:px-48 text-gray-200">
                         Revise su correo electónico que le hemos enviado un link.
                     </p>
-                    <Link to="/starkbook-sesion">
+                    <Link to="/woody-sesion">
                         <button className="text-white bottom-2.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
                             Ir a sesión
                         </button>

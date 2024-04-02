@@ -52,7 +52,7 @@ function Sesion() {
                 );
 
                 setTimeout(() => {
-                    navigate("/");
+                    navigate("/woody-libros");
                 }, 1000);
             }
         }
