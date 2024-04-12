@@ -4,24 +4,31 @@ function CardHome() {
     const card = [
         {
             id: 1,
-            enlace: "libros",
+            enlace: "books",
             name: "Libros",
             description: "Sumérgete en un mundo de aventuras, conocimiento y emociones con nuestra amplia selección de libros.",
             nameImage: "https://neuronup.com/wp-content/uploads/2023/03/benficios-de-la-lectura.jpg",
         },
         {
             id: 2,
-            enlace: "peliculas",
+            enlace: "films",
             name: "Películas",
             description: "Embárcate en un viaje cinematográfico a través de mi selección de películas. Desde emocionantes aventuras hasta dramas conmovedores y comedias hilarantes, tenemos algo para cada gusto y estado de ánimo.",
             nameImage: "https://rccmedia.com.do/wp-content/uploads/2023/06/industria-del-cine.jpg",
         },
         {
             id: 3,
-            enlace: "relatos",
+            enlace: "storis",
             name: "Relatos",
             description: "Déjate cautivar por la magia de la narrativa con mi colección de relatos.",
             nameImage: "https://img.freepik.com/fotos-premium/pluma-tintero-escritorio_488220-35438.jpg",
+        },
+        {
+            id: 4,
+            enlace: "services",
+            name: "Servicios",
+            description: "Sumérgete en una experiencia única con mi colección de propuestas, donde cada servicio te lleva a descubrir un mundo de posibilidades y te brinda una experiencia inolvidable.",
+            nameImage: "https://boldergroup.com/wp-content/uploads/2023/01/millennial-asia-businessmen-businesswomen-meeting-brainstorming-ideas-about-new-paperwork-project-colleagues-working-together-planning-success-strategy-enjoy-teamwork-small-modern-night-office-1024x576.jpg",
         }
 
     ];
@@ -48,7 +55,7 @@ function CardHome() {
                         </Link>
                         <p className="mb-3 font-normal text-gray-400">{item.description}</p>
                         <Link
-                            to={`woody-${item.enlace}`}
+                            to={`woody-${item.enlace}-users`}
                             className="text-white inline-flex items-center px-3 py-2 text-sm font-medium text-center rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
                         >
                             Ver más

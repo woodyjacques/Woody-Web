@@ -14,7 +14,7 @@ function Home() {
 
   useEffect(() => {
     if (token) {
-      navigate("/woody-libros");
+      navigate("/woody-books-users");
     }
   }, [token, navigate]);
 
