@@ -41,7 +41,7 @@ export const handleSubmitUsers = async (
     setName("");
     setEmail("");
     setPassword("");
-    setPaper("");
+    setPaper("usuario");
     setisVerify(false);
   }
 
