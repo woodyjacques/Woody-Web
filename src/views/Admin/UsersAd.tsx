@@ -31,7 +31,6 @@ function UsersAd() {
     useEffect(() => {
         obtenerUsers()
             .then((data) => {
-                console.log(data, "hola");
                 setUsers(data);
             })
             .catch((error) => {

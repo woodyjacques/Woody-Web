@@ -27,6 +27,7 @@ import FilmsAd from "../views/Admin/FilmsAd";
 import StorisAd from "../views/Admin/StorisAd";
 import ServiceAd from "../views/Admin/ServiceAd";
 import PerfilAd from "../views/Admin/PerfilAd";
+import CategoriesAd from "../views/Admin/Categories";
 
 const router = createBrowserRouter([
 
@@ -55,6 +56,7 @@ const router = createBrowserRouter([
       { path: "/woody-films-administrador", element: <FilmsAd /> },
       { path: "/woody-storis-administrador", element: <StorisAd /> },
       { path: "/woody-services-administrador", element: <ServiceAd /> },
+      { path: "/woody-categories-administrador", element: <CategoriesAd /> },
       { path: "/woody-perfil-administrador", element: <PerfilAd /> },
     ]
   },

@@ -115,6 +115,13 @@ function Adminstrador() {
                                 onClick={toggleAside}
                             ><span className="flex-1 ml-3 whitespace-nowrap">Servicios</span>
                             </NavLink>
+                        </li><li>
+                            <NavLink
+                                to="/woody-categories-administrador"
+                                className={`flex items-center p-2 text-white rounded-lg hover:bg-gray-800 `}
+                                onClick={toggleAside}
+                            ><span className="flex-1 ml-3 whitespace-nowrap">Categorías</span>
+                            </NavLink>
                         </li>
                         <li>
                             <NavLink
