@@ -38,7 +38,7 @@ function HeaderSesion() {
                     <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Woody</span>
                 </a>
                 <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                    <a href="/woody-sesion">
+                    <a href="#">
                         <button
                             type="button" onClick={showModal}
                             className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-500 font-medium rounded-lg text-sm px-4 py-2 text-center"
