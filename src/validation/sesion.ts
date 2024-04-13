@@ -91,7 +91,7 @@ export interface upEmailData {
   tokens: any;
   name: string;
   email: string;
-  telefone: string;
+  paper: string;
 }
 
 export const handleSubmitPassUpEmail = async (
@@ -139,9 +139,9 @@ export const handleSubmitPassUpEmail = async (
     const tokens = responseSesion.data.tokens;
     const name = responseSesion.data.name;
     const emaile = responseSesion.data.email;
-    const telefone = responseSesion.data.telefone;
+    const paper = responseSesion.data.paper;
     
-    return { tokens, name, email: emaile, telefone };
+    return { tokens, name, email: emaile, paper };
   } catch (error: any) {
     const message = error.response?.data.message;
     mostrarMensaje(message, MensajeErr);

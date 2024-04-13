@@ -7,7 +7,7 @@ import { handleSubmitPassUpEmail } from "../validation/sesion";
 export interface UserData {
     name: string;
     email: string;
-    telefone: string;
+    paper: string;
 }
 
 function PasswordUpEmail() {
@@ -56,10 +56,10 @@ function PasswordUpEmail() {
         const emailData = await handleSubmitPassUpEmail(event, password, verPassword, setPassword, setVerPassword);
 
         if (emailData) {
-            const { tokens, name, email, telefone } = emailData;
+            const { tokens, name, email, paper } = emailData;
             localStorage.setItem("ACCESS_TOKEN", tokens);
             const sessionData: UserData = {
-                name, email, telefone
+                name, email, paper
             };
 
             localStorage.setItem(
@@ -67,7 +67,7 @@ function PasswordUpEmail() {
                 JSON.stringify(sessionData)
             );
             setTimeout(() => {
-                navigate("/");
+                navigate("/authguard");
             }, 3000);
         }
     };
