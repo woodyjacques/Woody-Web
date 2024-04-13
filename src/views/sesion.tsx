@@ -61,7 +61,7 @@ function Sesion() {
             localStorage.setItem("USER_SESSION", JSON.stringify(sessionData));
 
             setTimeout(() => {
-                navigate("/authguard");
+                navigate("/woody-sesion");
             }, 1000);
         }
     }
