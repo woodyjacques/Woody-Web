@@ -3,12 +3,11 @@ import { mostrarMensaje } from "../components/toast";
 import axios from "axios";
 
 const api = "https://woody-backend.vercel.app";
-
 export interface SesionData {
   token: string;
   name: string;
   email: string;
-  paper:string;
+  paper: string;
 }
 
 export const handleSubmitUserSesion = async (
@@ -53,7 +52,6 @@ export const handleSubmitUserSesion = async (
     return null;
   }
 };
-
 export interface TokensData {
   token: any;
   name: string;
@@ -79,7 +77,7 @@ export const handleSubmitVerifi = async (tokens: any): Promise<TokensData | null
     const paper = responseSesion.data.paper;
 
     mostrarMensaje(responseSesion.data.message, MensajeActUsuario);
-    return { token, name, email: emaile, paper};
+    return { token, name, email: emaile, paper };
   } catch (error: any) {
     const message = error.response?.data.message;
     mostrarMensaje(message, MensajeErrUsuario);
@@ -102,8 +100,8 @@ export const handleSubmitPassUpEmail = async (
   setPassword: React.Dispatch<React.SetStateAction<string>>
 ): Promise<upEmailData | null> => {
   event.preventDefault();
-  const MensajeErr = document.getElementById("MensajeErrEmail");
-  const MensajeAct = document.getElementById("MensajeActEmail");
+  const MensajeErr = document.getElementById("MensajeErrAct");
+  const MensajeAct = document.getElementById("MensajeAct");
 
   if (password === "") {
     mostrarMensaje("Ingrese su nueva contraseña", MensajeErr);
@@ -127,7 +125,10 @@ export const handleSubmitPassUpEmail = async (
 
   try {
     const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get("token");
+    const tokenFromURL = urlParams.get("token");
+    const tokenFromLocalStorage = localStorage.getItem("ACCESS_TOKEN");
+
+    const token = tokenFromURL || tokenFromLocalStorage;
     const responseSesion = await axios.patch(`${api}/auth/update-password-email`, { password, verPassword }, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -140,7 +141,7 @@ export const handleSubmitPassUpEmail = async (
     const name = responseSesion.data.name;
     const emaile = responseSesion.data.email;
     const paper = responseSesion.data.paper;
-    
+
     return { tokens, name, email: emaile, paper };
   } catch (error: any) {
     const message = error.response?.data.message;
