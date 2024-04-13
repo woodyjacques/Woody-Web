@@ -28,7 +28,7 @@ function Books() {
       <div className="flex-grow">
         {token ? <HeaderSesion /> : <Header />}
         <Section
-          tittle="Books"
+          tittle="Libros"
           description="Bienvenido a mi colección de libros, donde la imaginación y el conocimiento se entrelazan para ofrecerte una experiencia única."
         />
       </div>

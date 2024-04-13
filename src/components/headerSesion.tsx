@@ -111,6 +111,14 @@ function HeaderSesion() {
                                 Servicios
                             </a>
                         </li>
+                        <li>
+                            <a
+                                href="/woody-perfil-users"
+                                className="block py-2 px-3 text-white rounded md:hover:bg-transparent md:hover:text-blue-400 md:p-0"
+                            >
+                                Perfil
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
