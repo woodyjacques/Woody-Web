@@ -18,9 +18,7 @@ function Header() {
                         src="https://res.cloudinary.com/dol6yfeoi/image/upload/v1711907259/unnamed_qmk5pe.png"
                         className="h-8"
                     />
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap text-gray-900" />
-                    Woody 
-                    <span />
+                    <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Woody</span>
                 </a>
                 <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                     <a href="/woody-sesion">

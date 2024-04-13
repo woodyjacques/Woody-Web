@@ -7,9 +7,10 @@ import { handleSubmitUsers } from "../validation/register";
 function Register() {
 
   const [name, setName] = useState("");
-  const [telefono, setTelefono] = useState("");
+  const [telephone, setTelephone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [paper, setPaper] = useState("usuario");
   const [isVerified, setisVerified] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -23,7 +24,7 @@ function Register() {
 
     useEffect(() => {
         if (token) {
-            navigate("/woody-libros");
+            navigate("/woody-books-users");
         }
     }, [token, navigate]);
 
@@ -32,7 +33,7 @@ function Register() {
     }
 
   const handleSubmitRegister = async (event: FormEvent) => {
-    const registrationSuccessful = await handleSubmitUsers(event, name, email,telefono, password, isVerified, setName, setEmail, setTelefono, setPassword, setisVerified);
+    const registrationSuccessful = await handleSubmitUsers(event, name, email, telephone, password, paper, isVerified, setName, setEmail, setTelephone, setPassword, setPaper, setisVerified);
 
     if (registrationSuccessful) {
       setTimeout(() => {
@@ -115,8 +116,8 @@ function Register() {
                   id="telefono"
                   type="text"
                   placeholder="Ingresa tu teléfono"
-                  value={telefono}
-                  onChange={(e) => setTelefono(e.target.value)}
+                  value={telephone}
+                  onChange={(e) => setTelephone(e.target.value)}
                   className="flex items-center w-full px-5 py-4 mr-2 text-sm font-medium outline-none focus:bg-grey-400 mb-7 placeholder:text-grey-700 bg-grey-200 text-dark-grey-900 rounded"
                 />
                 <label className="mb-2 text-sm text-start text-white">

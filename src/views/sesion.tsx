@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 export interface UserData {
     name: string;
     email: string;
+    paper:string;
 }
 
 function Sesion() {
@@ -20,81 +21,82 @@ function Sesion() {
 
     const token = localStorage.getItem("ACCESS_TOKEN");
 
-    useEffect(() => {
-        if (token) {
-            navigate("/woody-libros");
-        }
-    }, [token, navigate]);
-
-    if (token) {
-        return null;
-    }
-
     const urlParams = new URLSearchParams(window.location.search);
     const tokens = urlParams.get("token");
 
-    async function verificarTokens(tokens: any) {
-        if (tokens) {
-            const tokenData = await handleSubmitVerifi(tokens);
-
-            if (tokenData) {
-                const { token, name, email } = tokenData;
-
-                localStorage.setItem("ACCESS_TOKEN", token);
-
-                const sessionData: UserData = {
-                    name, email
-                };
-
-                localStorage.setItem(
-                    "USER_SESSION",
-                    JSON.stringify(sessionData)
-                );
-
-                setTimeout(() => {
-                    navigate("/woody-libros");
-                }, 1000);
-            }
-        }
-    }
-
-    verificarTokens(tokens);
-
     useEffect(() => {
+        if (token) {
+            navigate("/woody-books-users");
+            return;
+        }
+
+        if (tokens) {
+            verificarTokens(tokens);
+        }
+
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
         };
-        window.addEventListener('resize', handleResize);
+        window.addEventListener("resize", handleResize);
         return () => {
-            window.removeEventListener('resize', handleResize);
+            window.removeEventListener("resize", handleResize);
         };
-    }, []);
+    }, [token, tokens, navigate, verificarTokens]);
 
-    const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword);
-    };
 
-    const handleSubmitSesion = async (event: FormEvent) => {
-        const sesionData = await handleSubmitUserSesion(event, email, password, setEmail, setPassword);
+    async function verificarTokens(tokens: any) {
+        const tokenData = await handleSubmitVerifi(tokens);
 
-        if (sesionData) {
-            const { token, name, email } = sesionData;
+        if (tokenData) {
+            const { token, name, email, paper } = tokenData;
 
             localStorage.setItem("ACCESS_TOKEN", token);
 
             const sessionData: UserData = {
-                name, email
+                name,
+                email,
+                paper
             };
 
-            localStorage.setItem(
-                "USER_SESSION",
-                JSON.stringify(sessionData)
-            );
+            localStorage.setItem("USER_SESSION", JSON.stringify(sessionData));
 
             setTimeout(() => {
-                navigate("/woody-libros");
-            }, 3000);
+                navigate("/authguard");
+            }, 1000);
         }
+    }
+
+    const handleSubmitSesion = async (event: FormEvent) => {
+        const sesionData = await handleSubmitUserSesion(
+            event,
+            email,
+            password,
+            setEmail,
+            setPassword
+        );
+
+        if (sesionData) {
+            const { token, name, email, paper } = sesionData;
+
+            localStorage.setItem("ACCESS_TOKEN", token);
+
+            const sessionData: UserData = {
+                name,
+                email,
+                paper
+            };
+
+            localStorage.setItem("USER_SESSION", JSON.stringify(sessionData));
+
+            setTimeout(() => {
+                navigate("/authguard");
+            }, 3000);
+
+        }
+    };
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
     };
 
     return (

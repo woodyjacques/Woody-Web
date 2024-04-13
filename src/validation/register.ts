@@ -9,18 +9,21 @@ export const handleSubmitUsers = async (
   event: FormEvent,
   name: string,
   email: string,
-  telefono: string,
+  telephone: string,
   password: string,
+  paper:string,
   isVerified: boolean,
   setName: React.Dispatch<React.SetStateAction<string>>,
   setEmail: React.Dispatch<React.SetStateAction<string>>,
-  setTelefono: React.Dispatch<React.SetStateAction<string>>,
+  setTelephone: React.Dispatch<React.SetStateAction<string>>,
   setPassword: React.Dispatch<React.SetStateAction<string>>,
+  setPaper: React.Dispatch<React.SetStateAction<string>>,
   setisVerify: React.Dispatch<React.SetStateAction<boolean>>
 ): Promise<boolean> => {
   event.preventDefault();
   const MensajeErrUsuario = document.getElementById("MensajeErrUsuario");
   const MensajeActUsuario = document.getElementById("MensajeActUsuario");
+  const telefonoRegex = /^\d+$/;
 
   if (name === "") {
     mostrarMensaje("Ingrese su nombre", MensajeErrUsuario);
@@ -32,8 +35,13 @@ export const handleSubmitUsers = async (
     return false;
   }
 
-  if (telefono == "") {
+  if (telephone == "") {
     mostrarMensaje("Ingrese su teléfono", MensajeErrUsuario);
+    return false;
+  }
+
+  if (!telefonoRegex.test(telephone)) {
+    mostrarMensaje("Ingrese un número de teléfono válido", MensajeErrUsuario);
     return false;
   }
 
@@ -45,13 +53,14 @@ export const handleSubmitUsers = async (
   function resetForm() {
     setName("");
     setEmail("");
-    setTelefono("");
+    setTelephone("");
     setPassword("");
+    setPaper("");
     setisVerify(false);
   }
 
   try {
-    const responseRegister = await axios.post(`${api}/auth/register`, { name, email, telefono, password, isVerified });
+    const responseRegister = await axios.post(`${api}/auth/register`, { name, email, telephone, password, paper, isVerified });
     const mensaje = responseRegister.data.message;
     mostrarMensaje(mensaje, MensajeActUsuario);
     resetForm();

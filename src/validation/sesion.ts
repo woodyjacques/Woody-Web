@@ -8,7 +8,7 @@ export interface SesionData {
   token: string;
   name: string;
   email: string;
-  telefone: string;
+  paper:string;
 }
 
 export const handleSubmitUserSesion = async (
@@ -42,10 +42,10 @@ export const handleSubmitUserSesion = async (
     const token = responseSesion.data.token;
     const name = responseSesion.data.name;
     const emaile = responseSesion.data.email;
-    const telefone = responseSesion.data.telefone;
+    const paper = responseSesion.data.paper;
     resetForm();
     mostrarMensaje("Cargando ...", MensajeActUsuario);
-    return { token, name, email: emaile, telefone };
+    return { token, name, email: emaile, paper };
   } catch (error: any) {
     const message = error.response?.data.message;
     mostrarMensaje(message, MensajeErrUsuario);
@@ -58,6 +58,7 @@ export interface TokensData {
   token: any;
   name: string;
   email: string;
+  paper: string;
 }
 
 export const handleSubmitVerifi = async (tokens: any): Promise<TokensData | null> => {
@@ -75,9 +76,10 @@ export const handleSubmitVerifi = async (tokens: any): Promise<TokensData | null
     const token = responseSesion.data.token;
     const name = responseSesion.data.name;
     const emaile = responseSesion.data.email;
+    const paper = responseSesion.data.paper;
 
     mostrarMensaje(responseSesion.data.message, MensajeActUsuario);
-    return { token, name, email: emaile };
+    return { token, name, email: emaile, paper};
   } catch (error: any) {
     const message = error.response?.data.message;
     mostrarMensaje(message, MensajeErrUsuario);
