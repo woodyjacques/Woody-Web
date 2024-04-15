@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { handleSubmitCat, obtenerCategorias } from "../../validation/Categories";
+import { handleClickEl, handleSubmitCat, obtenerCategorias } from "../../validation/Categories";
+import { Modal } from "../../components/toast";
 
 function CategoriesAd() {
     const token = localStorage.getItem("ACCESS_TOKEN");
@@ -29,12 +30,6 @@ function CategoriesAd() {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
 
-    const toggleModal = () => {
-        setIsOpen(!isOpen);
-        setName("");
-        setDescription("");
-    };
-
     const handleSubmit = (event: FormEvent) => {
         handleSubmitCat(
             event,
@@ -61,6 +56,12 @@ function CategoriesAd() {
             });
     }, []);
 
+    const toggleModal = () => {
+        setIsOpen(!isOpen);
+        setName("");
+        setDescription("");
+    };
+
     const handleActualizar = (
         id: number,
         name: string,
@@ -74,7 +75,13 @@ function CategoriesAd() {
 
     const toggleModalAct = () => {
         setIsOpen(!isOpen);
-      };
+    };
+
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const showModal = () => {
+      setIsModalVisible(!isModalVisible);
+    };
 
     return (
         <div className=" bg-gray-900 p-4 border-2 border-gray-200 border-dashed rounded-lg mt-14 shadow-md">
@@ -128,6 +135,21 @@ function CategoriesAd() {
                                     >
                                         Actualizar
                                     </a>
+                                    <a href="#"
+                                        onClick={showModal}
+                                        className="ml-8 font-medium text-red-500 hover:underline"
+                                    >
+                                        Eliminar
+                                    </a>
+                                    <Modal
+                                        onConfirm={() => {
+                                            handleClickEl(cate);
+                                            showModal();
+                                        }}
+                                        isVisible={isModalVisible}
+                                        onClose={showModal}
+                                        message="¿Estás seguro de eliminar la categoía?"
+                                    />
                                 </td>
                             </tr>
                         ))}
@@ -180,10 +202,6 @@ function CategoriesAd() {
                                 ></p>
                                 <form className="space-y-6" onSubmit={handleSubmit}>
                                     <div>
-                                        <p
-                                            id="MensajeErrCont"
-                                            className=" hidden text-red-500 text-sm font-medium rounded-lg text-center"
-                                        ></p>
                                         <label className="block mb-2 text-sm font-medium text-white">
                                             Nombre
                                         </label>

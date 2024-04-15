@@ -4,18 +4,20 @@ import axios from "axios";
 const api = "https://woody-backend.vercel.app";
 const token = localStorage.getItem("ACCESS_TOKEN");
 
-export const handleSubmitCat = async (
+export const handleSubmitServ = async (
     event: FormEvent,
     id: number,
     name: string,
     description: string,
+    linkImagen: string,
     setId: React.Dispatch<React.SetStateAction<number>>,
     setName: React.Dispatch<React.SetStateAction<string>>,
-    setDescription: React.Dispatch<React.SetStateAction<string>>
+    setDescription: React.Dispatch<React.SetStateAction<string>>,
+    setLinkImagen: React.Dispatch<React.SetStateAction<string>>
 ) => {
     event.preventDefault();
-    const MensajeErr = document.getElementById("MensajeErrCat");
-    const MensajeAct = document.getElementById("MensajeCat");
+    const MensajeErr = document.getElementById("MensajeErrServ");
+    const MensajeAct = document.getElementById("MensajeServ");
 
     if (name === "") {
         mostrarMensaje("Ingrese el nombre", MensajeErr);
@@ -27,16 +29,23 @@ export const handleSubmitCat = async (
         return null;
     }
 
+    if (linkImagen === "") {
+        mostrarMensaje("Ingrese el link", MensajeErr);
+        return null;
+    }
+
     function resetForm() {
         setId(0);
         setName("");
         setDescription("");
+        setLinkImagen("");
     }
 
     try {
+        const token = localStorage.getItem("ACCESS_TOKEN");
         const method = id === 0 ? 'post' : 'patch';
-        const url = id === 0 ? `${api}/categories` : `${api}/categories/${id}`;
-        const response = await axios[method](url, { name, description }, {
+        const url = id === 0 ? `${api}/service` : `${api}/service/${id}`;
+        const response = await axios[method](url, { name, description, linkImagen }, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -50,9 +59,10 @@ export const handleSubmitCat = async (
 
 };
 
-export async function obtenerCategorias() {
+export async function obtenerServicios() {
     try {
-        const response = await axios.get(`${api}/categories`, {
+        const token = localStorage.getItem("ACCESS_TOKEN");
+        const response = await axios.get(`${api}/service`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -63,12 +73,12 @@ export async function obtenerCategorias() {
     }
 }
 
-export function handleClickEl(cate: any) {
-    const id = cate.id;
+export function handleClickEl(serv: any) {
+    const id = serv.id;
     const MensajeNegToast = document.getElementById("toast-negative");
   
     axios
-      .delete(`${api}/categories/${id}`, {
+      .delete(`${api}/service/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

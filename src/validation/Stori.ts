@@ -4,21 +4,32 @@ import axios from "axios";
 const api = "https://woody-backend.vercel.app";
 const token = localStorage.getItem("ACCESS_TOKEN");
 
-export const handleSubmitCat = async (
+export const handleSubmitStori = async (
     event: FormEvent,
     id: number,
     name: string,
+    categories: string,
     description: string,
+    linkVer: string,
+    linkImagen: string,
     setId: React.Dispatch<React.SetStateAction<number>>,
     setName: React.Dispatch<React.SetStateAction<string>>,
-    setDescription: React.Dispatch<React.SetStateAction<string>>
+    setCategories: React.Dispatch<React.SetStateAction<string>>,
+    setDescription: React.Dispatch<React.SetStateAction<string>>,
+    setLinkVer: React.Dispatch<React.SetStateAction<string>>,
+    setLinkImagen: React.Dispatch<React.SetStateAction<string>>
 ) => {
     event.preventDefault();
-    const MensajeErr = document.getElementById("MensajeErrCat");
-    const MensajeAct = document.getElementById("MensajeCat");
+    const MensajeErr = document.getElementById("MensajeErrServ");
+    const MensajeAct = document.getElementById("MensajeServ");
 
     if (name === "") {
         mostrarMensaje("Ingrese el nombre", MensajeErr);
+        return null;
+    }
+
+    if (categories === "") {
+        mostrarMensaje("Ingrese la categoria", MensajeErr);
         return null;
     }
 
@@ -27,16 +38,30 @@ export const handleSubmitCat = async (
         return null;
     }
 
+    if (linkVer === "") {
+        mostrarMensaje("Ingrese el link ver", MensajeErr);
+        return null;
+    }
+
+    if (linkImagen === "") {
+        mostrarMensaje("Ingrese el link imagen", MensajeErr);
+        return null;
+    }
+
     function resetForm() {
         setId(0);
         setName("");
+        setCategories("");
         setDescription("");
+        setLinkVer("");
+        setLinkImagen("");
     }
 
     try {
+        const token = localStorage.getItem("ACCESS_TOKEN");
         const method = id === 0 ? 'post' : 'patch';
-        const url = id === 0 ? `${api}/categories` : `${api}/categories/${id}`;
-        const response = await axios[method](url, { name, description }, {
+        const url = id === 0 ? `${api}/stori` : `${api}/stori/${id}`;
+        const response = await axios[method](url, { name, description, categories, linkVer, linkImagen }, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -50,9 +75,10 @@ export const handleSubmitCat = async (
 
 };
 
-export async function obtenerCategorias() {
+export async function obtenerRelatos() {
     try {
-        const response = await axios.get(`${api}/categories`, {
+        const token = localStorage.getItem("ACCESS_TOKEN");
+        const response = await axios.get(`${api}/stori`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -63,12 +89,12 @@ export async function obtenerCategorias() {
     }
 }
 
-export function handleClickEl(cate: any) {
-    const id = cate.id;
+export function handleClickEl(stori: any) {
+    const id = stori.id;
     const MensajeNegToast = document.getElementById("toast-negative");
   
     axios
-      .delete(`${api}/categories/${id}`, {
+      .delete(`${api}/stori/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
