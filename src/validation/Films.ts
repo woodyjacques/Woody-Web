@@ -4,19 +4,21 @@ import axios from "axios";
 const api = "https://woody-backend.vercel.app";
 const token = localStorage.getItem("ACCESS_TOKEN");
 
-export const handleSubmitStori = async (
+export const handleSubmitFilms = async (
     event: FormEvent,
     id: number,
     name: string,
     categories: string,
     description: string,
     linkVer: string,
+    linkTrailer: string,
     linkImagen: string,
     setId: React.Dispatch<React.SetStateAction<number>>,
     setName: React.Dispatch<React.SetStateAction<string>>,
     setCategories: React.Dispatch<React.SetStateAction<string>>,
     setDescription: React.Dispatch<React.SetStateAction<string>>,
     setLinkVer: React.Dispatch<React.SetStateAction<string>>,
+    setlinkTrailer: React.Dispatch<React.SetStateAction<string>>,
     setLinkImagen: React.Dispatch<React.SetStateAction<string>>
 ) => {
     event.preventDefault();
@@ -43,6 +45,11 @@ export const handleSubmitStori = async (
         return null;
     }
 
+    if (linkTrailer === "") {
+        mostrarMensaje("Ingrese el link trailer", MensajeErr);
+        return null;
+    }
+
     if (linkImagen === "") {
         mostrarMensaje("Ingrese el link imagen", MensajeErr);
         return null;
@@ -54,14 +61,15 @@ export const handleSubmitStori = async (
         setCategories("");
         setDescription("");
         setLinkVer("");
+        setlinkTrailer("");
         setLinkImagen("");
     }
 
     try {
         const token = localStorage.getItem("ACCESS_TOKEN");
         const method = id === 0 ? 'post' : 'patch';
-        const url = id === 0 ? `${api}/stori` : `${api}/stori/${id}`;
-        const response = await axios[method](url, { name, description, categories, linkVer, linkImagen }, {
+        const url = id === 0 ? `${api}/film` : `${api}/film/${id}`;
+        const response = await axios[method](url, { name, description, categories, linkVer, linkTrailer, linkImagen }, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -75,10 +83,10 @@ export const handleSubmitStori = async (
 
 };
 
-export async function obtenerRelatos() {
+export async function obtenerPeliculas() {
     try {
         const token = localStorage.getItem("ACCESS_TOKEN");
-        const response = await axios.get(`${api}/stori`, {
+        const response = await axios.get(`${api}/film`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -89,12 +97,12 @@ export async function obtenerRelatos() {
     }
 }
 
-export function handleClickEl(stori: any) {
-    const id = stori.id;
+export function handleClickEl(film: any) {
+    const id = film.id;
     const MensajeNegToast = document.getElementById("toast-negative");
   
     axios
-      .delete(`${api}/stori/${id}`, {
+      .delete(`${api}/film/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

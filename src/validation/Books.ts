@@ -4,19 +4,19 @@ import axios from "axios";
 const api = "https://woody-backend.vercel.app";
 const token = localStorage.getItem("ACCESS_TOKEN");
 
-export const handleSubmitStori = async (
+export const handleSubmitBooks = async (
     event: FormEvent,
     id: number,
     name: string,
     categories: string,
     description: string,
-    linkVer: string,
+    linkLeer: string,
     linkImagen: string,
     setId: React.Dispatch<React.SetStateAction<number>>,
     setName: React.Dispatch<React.SetStateAction<string>>,
     setCategories: React.Dispatch<React.SetStateAction<string>>,
     setDescription: React.Dispatch<React.SetStateAction<string>>,
-    setLinkVer: React.Dispatch<React.SetStateAction<string>>,
+    setLinkLeer: React.Dispatch<React.SetStateAction<string>>,
     setLinkImagen: React.Dispatch<React.SetStateAction<string>>
 ) => {
     event.preventDefault();
@@ -38,8 +38,8 @@ export const handleSubmitStori = async (
         return null;
     }
 
-    if (linkVer === "") {
-        mostrarMensaje("Ingrese el link ver", MensajeErr);
+    if (linkLeer === "") {
+        mostrarMensaje("Ingrese el link leer", MensajeErr);
         return null;
     }
 
@@ -53,15 +53,15 @@ export const handleSubmitStori = async (
         setName("");
         setCategories("");
         setDescription("");
-        setLinkVer("");
+        setLinkLeer("");
         setLinkImagen("");
     }
 
     try {
         const token = localStorage.getItem("ACCESS_TOKEN");
         const method = id === 0 ? 'post' : 'patch';
-        const url = id === 0 ? `${api}/stori` : `${api}/stori/${id}`;
-        const response = await axios[method](url, { name, description, categories, linkVer, linkImagen }, {
+        const url = id === 0 ? `${api}/books` : `${api}/books/${id}`;
+        const response = await axios[method](url, { name, description, categories, linkLeer, linkImagen }, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -75,10 +75,10 @@ export const handleSubmitStori = async (
 
 };
 
-export async function obtenerRelatos() {
+export async function obtenerLibros() {
     try {
         const token = localStorage.getItem("ACCESS_TOKEN");
-        const response = await axios.get(`${api}/stori`, {
+        const response = await axios.get(`${api}/books`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -89,24 +89,23 @@ export async function obtenerRelatos() {
     }
 }
 
-export function handleClickEl(stori: any) {
-    const id = stori.id;
+export function handleClickEl(film: any) {
+    const id = film.id;
     const MensajeNegToast = document.getElementById("toast-negative");
-  
+
     axios
-      .delete(`${api}/stori/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        console.log(response);
-        window.location.reload();
-      })
-      .catch((error) => {
-        if (error.response) {
-          mostrarMensaje(error.response.data.error, MensajeNegToast);
-        }
-      });
-  }
-  
+        .delete(`${api}/books/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+        .then((response) => {
+            console.log(response);
+            window.location.reload();
+        })
+        .catch((error) => {
+            if (error.response) {
+                mostrarMensaje(error.response.data.error, MensajeNegToast);
+            }
+        });
+}

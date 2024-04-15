@@ -25,7 +25,7 @@ export const handleSubmitServ = async (
     }
 
     if (description === "") {
-        mostrarMensaje("Ingrese la description", MensajeErr);
+        mostrarMensaje("Ingrese la descripción", MensajeErr);
         return null;
     }
 
