@@ -28,6 +28,7 @@ import StorisAd from "../views/Admin/StorisAd";
 import ServiceAd from "../views/Admin/ServiceAd";
 import PerfilAd from "../views/Admin/PerfilAd";
 import CategoriesAd from "../views/Admin/Categories";
+import Donacion from "../views/Donaciones";
 
 const router = createBrowserRouter([
 
@@ -61,6 +62,7 @@ const router = createBrowserRouter([
     ]
   },
 
+  { path: "/woody-donacion", element: <Donacion set={""}/> },
   { path: "/authguard", element: <AuthGuard /> },
   { path: "*", element: <Error404 /> },
 ]);

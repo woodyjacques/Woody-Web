@@ -4,6 +4,7 @@ import { Section } from "../../components/Section";
 import Header from "../../components/header";
 import HeaderSesion from "../../components/headerSesion";
 import { useNavigate } from "react-router-dom";
+import CardsBook from "../../components/CardsBook";
 
 export interface UserData {
   name: string;
@@ -61,9 +62,9 @@ function Books() {
           description="Bienvenido a mi colección de libros, donde la imaginación y el conocimiento se entrelazan para ofrecerte una experiencia única."
         />
       </div>
+      <CardsBook/>
       <Footer />
     </div>
-
   );
 }
 

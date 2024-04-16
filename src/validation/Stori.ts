@@ -77,12 +77,7 @@ export const handleSubmitStori = async (
 
 export async function obtenerRelatos() {
     try {
-        const token = localStorage.getItem("ACCESS_TOKEN");
-        const response = await axios.get(`${api}/stori`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
+        const response = await axios.get(`${api}/stori`);
         return response.data;
     } catch (error) {
         throw error;

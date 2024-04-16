@@ -66,7 +66,6 @@ export const handleSubmitFilms = async (
     }
 
     try {
-        const token = localStorage.getItem("ACCESS_TOKEN");
         const method = id === 0 ? 'post' : 'patch';
         const url = id === 0 ? `${api}/film` : `${api}/film/${id}`;
         const response = await axios[method](url, { name, description, categories, linkVer, linkTrailer, linkImagen }, {
@@ -85,12 +84,7 @@ export const handleSubmitFilms = async (
 
 export async function obtenerPeliculas() {
     try {
-        const token = localStorage.getItem("ACCESS_TOKEN");
-        const response = await axios.get(`${api}/film`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
+        const response = await axios.get(`${api}/film`);
         return response.data;
     } catch (error) {
         throw error;

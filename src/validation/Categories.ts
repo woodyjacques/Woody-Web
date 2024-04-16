@@ -8,9 +8,11 @@ export const handleSubmitCat = async (
     event: FormEvent,
     id: number,
     name: string,
+    element: string,
     description: string,
     setId: React.Dispatch<React.SetStateAction<number>>,
     setName: React.Dispatch<React.SetStateAction<string>>,
+    setElement: React.Dispatch<React.SetStateAction<string>>,
     setDescription: React.Dispatch<React.SetStateAction<string>>
 ) => {
     event.preventDefault();
@@ -22,6 +24,11 @@ export const handleSubmitCat = async (
         return null;
     }
 
+    if (element === "") {
+        mostrarMensaje("Ingrese el elemento", MensajeErr);
+        return null;
+    }
+
     if (description === "") {
         mostrarMensaje("Ingrese la descripción", MensajeErr);
         return null;
@@ -30,13 +37,14 @@ export const handleSubmitCat = async (
     function resetForm() {
         setId(0);
         setName("");
+        setElement("");
         setDescription("");
     }
 
     try {
         const method = id === 0 ? 'post' : 'patch';
         const url = id === 0 ? `${api}/categories` : `${api}/categories/${id}`;
-        const response = await axios[method](url, { name, description }, {
+        const response = await axios[method](url, { name, element, description }, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -52,11 +60,7 @@ export const handleSubmitCat = async (
 
 export async function obtenerCategorias() {
     try {
-        const response = await axios.get(`${api}/categories`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
+        const response = await axios.get(`${api}/categories`);
         return response.data;
     } catch (error) {
         throw error;

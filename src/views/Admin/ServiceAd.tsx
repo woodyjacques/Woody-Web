@@ -1,8 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { handleSubmitServ, obtenerServicios } from "../../validation/Services";
+import { handleClickEl, handleSubmitServ, obtenerServicios } from "../../validation/Services";
 import { Modal } from "../../components/toast";
-import { handleClickEl } from "../../validation/Categories";
 
 function ServiceAd() {
     const token = localStorage.getItem("ACCESS_TOKEN");
@@ -136,7 +135,7 @@ function ServiceAd() {
                                 >
                                     {serv.name}
                                 </th>
-                                <td className="px-6 py-4">{serv.description}</td>
+                                <td className="px-6 py-4">{serv.description.slice(0, 50)}...</td>
                                 <td className="px-6 py-4">
                                     <a
                                         href="#"

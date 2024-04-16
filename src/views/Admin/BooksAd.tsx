@@ -4,6 +4,13 @@ import { handleClickEl, handleSubmitBooks, obtenerLibros } from "../../validatio
 import { obtenerCategorias } from "../../validation/Categories";
 import { Modal } from "../../components/toast";
 
+interface Categoria {
+    id: number;
+    name: string;
+    element: string;
+    description: string;
+}
+
 function BooksAd() {
     const token = localStorage.getItem("ACCESS_TOKEN");
     const paperes = localStorage.getItem("USER_SESSION");
@@ -70,8 +77,9 @@ function BooksAd() {
 
     useEffect(() => {
         obtenerCategorias()
-            .then((data) => {
-                setCate(data);
+            .then((data: Categoria[]) => {
+                const Filtradas = data.filter(fil => fil.element === "libro");
+                setCate(Filtradas);
             })
             .catch((error) => {
                 console.error(error);
@@ -79,7 +87,7 @@ function BooksAd() {
     }, []);
 
     const [books, setBook] = useState<
-        { id: number; name: string; categories: string; description: string,  linkLeer: string, linkImagen: string }[]
+        { id: number; name: string; categories: string; description: string, linkLeer: string, linkImagen: string }[]
     >([]);
 
     useEffect(() => {
@@ -172,8 +180,8 @@ function BooksAd() {
                                     {book.name}
                                 </th>
                                 <td className="px-6 py-4">{book.categories}</td>
-                                <td className="px-6 py-4">{book.description}</td>
-                                <td className="px-6 py-4">{book.linkLeer}</td>
+                                <td className="px-6 py-4">{book.description.slice(0, 50)}...</td>
+                                <td className="px-6 py-4">{book.linkLeer.slice(0, 30)}...</td>
                                 <td className="px-6 py-4">
                                     <a
                                         href="#"

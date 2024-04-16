@@ -4,6 +4,13 @@ import { handleClickEl, handleSubmitStori, obtenerRelatos } from "../../validati
 import { obtenerCategorias } from "../../validation/Categories";
 import { Modal } from "../../components/toast";
 
+interface Categoria {
+    id: number;
+    name: string;
+    element: string;
+    description: string;
+}
+
 function StorisAd() {
     const token = localStorage.getItem("ACCESS_TOKEN");
     const paperes = localStorage.getItem("USER_SESSION");
@@ -70,8 +77,9 @@ function StorisAd() {
 
     useEffect(() => {
         obtenerCategorias()
-            .then((data) => {
-                setCate(data);
+            .then((data: Categoria[]) => {
+                const Filtradas = data.filter(fil => fil.element === "relato");
+                setCate(Filtradas);
             })
             .catch((error) => {
                 console.error(error);
@@ -172,8 +180,8 @@ function StorisAd() {
                                     {stori.name}
                                 </th>
                                 <td className="px-6 py-4">{stori.categories}</td>
-                                <td className="px-6 py-4">{stori.description}</td>
-                                <td className="px-6 py-4">{stori.linkVer}</td>
+                                <td className="px-6 py-4">{stori.description.slice(0, 50)}...</td>
+                                <td className="px-6 py-4">{stori.linkVer.slice(0, 50)}...</td>
                                 <td className="px-6 py-4">
                                     <a
                                         href="#"

@@ -4,6 +4,13 @@ import { handleClickEl, handleSubmitFilms, obtenerPeliculas } from "../../valida
 import { obtenerCategorias } from "../../validation/Categories";
 import { Modal } from "../../components/toast";
 
+interface Categoria {
+    id: number;
+    name: string;
+    element: string;
+    description: string;
+}
+
 function FilmsAd() {
     const token = localStorage.getItem("ACCESS_TOKEN");
     const paperes = localStorage.getItem("USER_SESSION");
@@ -74,8 +81,9 @@ function FilmsAd() {
 
     useEffect(() => {
         obtenerCategorias()
-            .then((data) => {
-                setCate(data);
+            .then((data: Categoria[]) => {
+                const Filtradas = data.filter(fil => fil.element === "pelicula");
+                setCate(Filtradas);
             })
             .catch((error) => {
                 console.error(error);
@@ -180,9 +188,9 @@ function FilmsAd() {
                                     {film.name}
                                 </th>
                                 <td className="px-6 py-4">{film.categories}</td>
-                                <td className="px-6 py-4">{film.description}</td>
-                                <td className="px-6 py-4">{film.linkVer}</td>
-                                <td className="px-6 py-4">{film.linkTrailer}</td>
+                                <td className="px-6 py-4">{film.description.slice(0, 50)}...</td>
+                                <td className="px-6 py-4">{film.linkVer.slice(0, 50)}...</td>
+                                <td className="px-6 py-4">{film.linkTrailer.slice(0, 50)}...</td>
                                 <td className="px-6 py-4">
                                     <a
                                         href="#"

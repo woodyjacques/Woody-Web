@@ -28,6 +28,7 @@ function CategoriesAd() {
     const [isOpen, setIsOpen] = useState(false);
     const [id, setId] = useState(0);
     const [name, setName] = useState("");
+    const [element, setElement] = useState("");
     const [description, setDescription] = useState("");
 
     const handleSubmit = (event: FormEvent) => {
@@ -35,15 +36,17 @@ function CategoriesAd() {
             event,
             id,
             name,
+            element,
             description,
             setId,
             setName,
+            setElement,
             setDescription
         );
     };
 
     const [categorie, setCategories] = useState<
-        { id: number; name: string; description: string }[]
+        { id: number; name: string; element: string, description: string }[]
     >([]);
 
     useEffect(() => {
@@ -59,16 +62,19 @@ function CategoriesAd() {
     const toggleModal = () => {
         setIsOpen(!isOpen);
         setName("");
+        setElement("");
         setDescription("");
     };
 
     const handleActualizar = (
         id: number,
         name: string,
+        element: string,
         description: string,
     ) => {
         setId(id);
         setName(name);
+        setElement(element);
         setDescription(description);
         toggleModalAct();
     };
@@ -80,7 +86,7 @@ function CategoriesAd() {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const showModal = () => {
-      setIsModalVisible(!isModalVisible);
+        setIsModalVisible(!isModalVisible);
     };
 
     return (
@@ -99,6 +105,9 @@ function CategoriesAd() {
                         <tr>
                             <th scope="col" className="px-6 py-3">
                                 Nombre
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                Elemento
                             </th>
                             <th scope="col" className="px-6 py-3">
                                 Descripción
@@ -120,7 +129,8 @@ function CategoriesAd() {
                                 >
                                     {cate.name}
                                 </th>
-                                <td className="px-6 py-4">{cate.description}</td>
+                                <td className="px-6 py-4">{cate.element}</td>
+                                <td className="px-6 py-4">{cate.description.slice(0, 50)}...</td>
                                 <td className="px-6 py-4">
                                     <a
                                         href="#"
@@ -129,6 +139,7 @@ function CategoriesAd() {
                                             handleActualizar(
                                                 cate.id,
                                                 cate.name,
+                                                cate.element,
                                                 cate.description
                                             )
                                         }
@@ -213,6 +224,24 @@ function CategoriesAd() {
                                                 value={name}
                                                 onChange={(e) => setName(e.target.value)}
                                             />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label className="block mb-2 text-sm font-medium text-white">
+                                            Categorías
+                                        </label>
+                                        <div className="relative">
+                                            <select
+                                                id="usuarios"
+                                                className="bg-gray-600 border border-gray-500 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
+                                                value={element}
+                                                onChange={(e) => setElement(e.target.value)}
+                                            >
+                                                <option value="">Elementos</option>
+                                                <option value="libro">Libro</option>
+                                                <option value="pelicula">Película</option>
+                                                <option value="relato">Relato</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div>

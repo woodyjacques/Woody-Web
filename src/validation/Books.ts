@@ -58,7 +58,6 @@ export const handleSubmitBooks = async (
     }
 
     try {
-        const token = localStorage.getItem("ACCESS_TOKEN");
         const method = id === 0 ? 'post' : 'patch';
         const url = id === 0 ? `${api}/books` : `${api}/books/${id}`;
         const response = await axios[method](url, { name, description, categories, linkLeer, linkImagen }, {
@@ -77,12 +76,7 @@ export const handleSubmitBooks = async (
 
 export async function obtenerLibros() {
     try {
-        const token = localStorage.getItem("ACCESS_TOKEN");
-        const response = await axios.get(`${api}/books`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
+        const response = await axios.get(`${api}/books`);
         return response.data;
     } catch (error) {
         throw error;

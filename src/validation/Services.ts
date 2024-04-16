@@ -61,12 +61,7 @@ export const handleSubmitServ = async (
 
 export async function obtenerServicios() {
     try {
-        const token = localStorage.getItem("ACCESS_TOKEN");
-        const response = await axios.get(`${api}/service`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
+        const response = await axios.get(`${api}/service`);
         return response.data;
     } catch (error) {
         throw error;
@@ -75,6 +70,7 @@ export async function obtenerServicios() {
 
 export function handleClickEl(serv: any) {
     const id = serv.id;
+    console.log(id);
     const MensajeNegToast = document.getElementById("toast-negative");
   
     axios
