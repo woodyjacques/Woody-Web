@@ -164,7 +164,3 @@ function CardsBook() {
 }
 
 export default CardsBook;
-
-// onClick={() => {
-//     obtener(book.linkLeer);
-// }}

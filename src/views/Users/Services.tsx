@@ -4,6 +4,7 @@ import { Section } from "../../components/Section";
 import Header from "../../components/header";
 import HeaderSesion from "../../components/headerSesion";
 import { useNavigate } from "react-router-dom";
+import CardService from "../../components/CardService";
 
 function Services() {
 
@@ -31,6 +32,7 @@ function Services() {
                     description="Bienvenido a mi conjunto de servicios! Sumérgete en un mundo de experiencias cautivadoras, donde cada servicio te llevará a explorar un abanico de posibilidades y te brindará una experiencia única. ."
                 />
             </div>
+            <CardService/>
             <Footer />
         </div>
 
