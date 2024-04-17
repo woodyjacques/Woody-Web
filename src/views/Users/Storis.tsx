@@ -4,6 +4,7 @@ import { Section } from "../../components/Section";
 import Header from "../../components/header";
 import HeaderSesion from "../../components/headerSesion";
 import { useNavigate } from "react-router-dom";
+import CardStori from "../../components/CardStori";
 
 export interface UserData {
   name: string;
@@ -36,6 +37,7 @@ function Storis() {
           description="Bienvenido a mi colección de relatos! Sumérgete en un mundo de narrativas cautivadoras, donde cada historia te transportará a lugares inesperados y te hará sentir una amplia gama de emociones."
         />
       </div>
+      <CardStori />
       <Footer />
     </div>
 
