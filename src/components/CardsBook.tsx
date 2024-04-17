@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { obtenerCategorias } from "../validation/Categories";
 import { obtenerLibros } from "../validation/Books";
-import Donacion from "../views/Donaciones";
 
 interface Categoria {
     id: number;
@@ -14,7 +13,6 @@ function CardsBook() {
 
     const tokens = localStorage.getItem("ACCESS_TOKEN");
     const [filter, setFilter] = useState("");
-    const [datos, setDatos] = useState("");
 
     const [books, setBook] = useState<
         { id: number; name: string; categories: string; description: string, linkLeer: string, linkImagen: string }[]
@@ -52,7 +50,6 @@ function CardsBook() {
     useEffect(() => {
         obtenerLibros()
             .then((data) => {
-                console.log(data);
                 const filteredArticles = data.filter((article: any) =>
                     article.categories.includes(selectedCategory) &&
                     article.name.toLowerCase().includes(filter.toLowerCase())
@@ -64,10 +61,6 @@ function CardsBook() {
                 console.error(error);
             });
     }, [selectedCategory, filter]);
-
-    const obtener = (data: any) => {
-        setDatos(data);
-    };
 
     return (
         <div>
@@ -143,10 +136,8 @@ function CardsBook() {
                                 <p className="text-white"> {book.description}</p>
                                 <div className="flex items-center justify-between">
                                     {tokens ? (
-                                        <a href="#">
-                                            <div onClick={() => {
-                                                obtener(book.linkLeer);
-                                            }}
+                                        <a href={`/woody-donacion?link=${book.linkLeer}`}>
+                                            <div
                                                 className="cursor-pointer text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
                                             >
                                                 Leer
@@ -168,10 +159,12 @@ function CardsBook() {
                     ))
                 )}
             </div>
-            <Donacion set={datos}/>
         </div>
-
     );
 }
 
 export default CardsBook;
+
+// onClick={() => {
+//     obtener(book.linkLeer);
+// }}

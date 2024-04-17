@@ -62,7 +62,7 @@ const router = createBrowserRouter([
     ]
   },
 
-  { path: "/woody-donacion", element: <Donacion set={""}/> },
+  { path: "/woody-donacion", element: <Donacion/> },
   { path: "/authguard", element: <AuthGuard /> },
   { path: "*", element: <Error404 /> },
 ]);
