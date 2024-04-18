@@ -5,12 +5,22 @@ import { useNavigate } from "react-router-dom";
 export function Donacion() {
 
   const urlParams = new URLSearchParams(window.location.search);
-  const link = urlParams.get("link");
+  let link: string | null = null;
+
+  if (urlParams.has("link")) {
+    link = urlParams.get("link");
+    localStorage.removeItem("SEGUIMIENTO_LINK");
+    if (link) {
+      localStorage.setItem("SEGUIMIENTO_LINK", link);
+    }
+  }
+
+  const links = localStorage.getItem("SEGUIMIENTO_LINK");
   const paperes = localStorage.getItem("USER_SESSION");
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!link) {
+    if (!link && !links) {
       navigate("/woody-books-users");
     } else if (paperes) {
       const userSession = JSON.parse(paperes);
@@ -19,9 +29,9 @@ export function Donacion() {
         navigate("/woody-users-administrador");
       }
     }
-  }, [link, paperes, navigate]);
+  }, [link, paperes, links, navigate]);
 
-  if (!link) {
+  if (!link && !links) {
     return null;
   }
 
@@ -70,12 +80,12 @@ export function Donacion() {
                 Inicio
               </div>
             </a>
-            <a target="_blank" href="https://www.paypal.com/donate/?hosted_button_id=V98RHHF65T2R6">
+            <a target="_blank" href="https://www.paypal.com/donate/?hosted_button_id=5N6CYXMAEF8ZU">
               <div className="cursor-pointer text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-green-600 hover:bg-green-700 focus:ring-green-800">
                 Donar
               </div>
             </a>
-            <a target="_blank" href={link || ""}>
+            <a target="_blank" href={link || links || ""}>
               <div className="cursor-pointer text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
                 Seguir
               </div>

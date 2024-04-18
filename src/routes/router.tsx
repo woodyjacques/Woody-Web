@@ -29,6 +29,7 @@ import ServiceAd from "../views/Admin/ServiceAd";
 import PerfilAd from "../views/Admin/PerfilAd";
 import CategoriesAd from "../views/Admin/Categories";
 import Donacion from "../views/Donaciones";
+import Apobacion from "../views/Aprovacion";
 
 const router = createBrowserRouter([
 
@@ -63,6 +64,7 @@ const router = createBrowserRouter([
   },
 
   { path: "/woody-donacion", element: <Donacion/> },
+  { path: "/woody-aprobacion", element: <Apobacion/> },
   { path: "/authguard", element: <AuthGuard /> },
   { path: "*", element: <Error404 /> },
 ]);
