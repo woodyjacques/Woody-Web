@@ -6,7 +6,6 @@ export function Donacion() {
 
   const urlParams = new URLSearchParams(window.location.search);
   const link = urlParams.get("link");
-  console.log(link,"link");
   const paperes = localStorage.getItem("USER_SESSION");
   const navigate = useNavigate();
 
@@ -71,7 +70,7 @@ export function Donacion() {
                 Inicio
               </div>
             </a>
-            <a href="">
+            <a target="_blank" href="https://www.paypal.com/donate/?hosted_button_id=V98RHHF65T2R6">
               <div className="cursor-pointer text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-green-600 hover:bg-green-700 focus:ring-green-800">
                 Donar
               </div>
