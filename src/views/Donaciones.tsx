@@ -6,6 +6,7 @@ export function Donacion() {
 
   const urlParams = new URLSearchParams(window.location.search);
   const link = urlParams.get("link");
+  console.log(link,"link");
   const paperes = localStorage.getItem("USER_SESSION");
   const navigate = useNavigate();
 
