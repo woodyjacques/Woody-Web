@@ -157,7 +157,7 @@ function Adminstrador() {
                 className="p-4 sm:ml-64"
                 style={{
                     background: "#111827",
-                    height: "200vh",
+                    height: "500vh",
                 }}
             >
                 <Outlet />
