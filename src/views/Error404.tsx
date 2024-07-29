@@ -15,9 +15,9 @@ export function Error404() {
             Lo sentimos, no pudimos encontrar la página que estas buscando.
           </p>
 
-          {token ?  <Link to="/liketechnology-articulos">
+          {token ?  <Link to="/woody-product-users">
             <button className="text-white bottom-2.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
-              Ir a los libros
+              Ir a los productos
             </button>
           </Link> :  <Link to="/">
             <button className="text-white bottom-2.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">

@@ -26,7 +26,7 @@ function Sesion() {
 
     useEffect(() => {
         if (token) {
-            navigate("/woody-books-users");
+            navigate("/woody-product-users");
             return;
         }
 

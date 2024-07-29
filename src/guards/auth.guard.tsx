@@ -20,7 +20,7 @@ export const AuthGuard = () => {
   useEffect(() => {
     if (user && !isRedirected) {
       const redirectRoutes = {
-        "usuario": "/woody-books-users",
+        "usuario": "/woody-product-users",
         "administrador": "/woody-users-administrador",
       };
 
