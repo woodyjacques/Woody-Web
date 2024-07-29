@@ -9,16 +9,14 @@ function Contacto() {
                         Sobre mí
                     </h1>
                     <p className="mb-8 text-lg font-normal lg:text-xl sm:px-16 lg:px-48 text-gray-200">
-                        Como ingeniero en sistemas especializado en desarrollo web, desktop, mobile, inteligencia artificial y hacking, me complace darles la más cordial bienvenida al Proyecto Woody Jacques.
-
-                        Un emprendimiento que se erige como una empresa dedicada a la creación de relatos inspiradores. Nos enorgullece fusionar la riqueza de la literatura, el cine y los personajes emblemáticos para motivar a las personas a alcanzar sus sueños.
+                        Como ingeniero en sistemas computacionales especializado en desarrollo de aplicaciones web, escritorio, mobile, inteligencia artificial y hacking, me complace darles la más cordial bienvenida al Proyecto Woody Jacques.
                     </p>
                     <Link
                         to={`https://api.whatsapp.com/send?phone=18098820434&text=Hola quiero conversar con Woody Jacques.`}
                         target="_blank"
                     >
                         <button className="text-white bottom-2.5 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-4 py-2 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
-                            Contáctanos
+                            Contáctame 
                         </button>
                     </Link>
                 </div>

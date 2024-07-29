@@ -12,7 +12,7 @@ export interface UserData {
   paper: string;
 }
 
-function Books() {
+function Product() {
   
   const urlParams = new URLSearchParams(window.location.search);
   const token = urlParams.get("token");
@@ -58,8 +58,8 @@ function Books() {
       <div className="flex-grow">
         {tokens ? <HeaderSesion /> : <Header />}
         <Section
-          tittle="Libros"
-          description="Bienvenido a mi colección de libros, donde la imaginación y el conocimiento se entrelazan para ofrecerte una experiencia única."
+          tittle="Productos"
+          description="Bienvenido a mi colección de electrodomésticos, donde la última tecnología y el diseño práctico se unen para mejorar tu hogar y simplificar tu vida diaria."
         />
       </div>
       <CardsBook/>
@@ -68,4 +68,4 @@ function Books() {
   );
 }
 
-export default Books;
+export default Product;

@@ -35,7 +35,7 @@ function HeaderSesion() {
                         src="https://res.cloudinary.com/dol6yfeoi/image/upload/v1711907259/unnamed_qmk5pe.png"
                         className="h-8"
                     />
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Woody</span>
+                    <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Wjacques</span>
                 </a>
                 <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                     <a href="#">
@@ -81,26 +81,18 @@ function HeaderSesion() {
                        
                         <li>
                             <a
-                                href="/woody-books-users"
+                                href="/woody-product-users"
                                 className="block py-2 px-3 text-white rounded md:hover:bg-transparent md:hover:text-blue-400 md:p-0"
                             >
-                                Libros
+                                Productos
                             </a>
                         </li>
                         <li>
                             <a
-                                href="/woody-films-users"
+                                href="/woody-course-users"
                                 className="block py-2 px-3 text-white rounded md:hover:bg-transparent md:hover:text-blue-400 md:p-0"
                             >
                                 Películas
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/woody-storis-users"
-                                className="block py-2 px-3 text-white rounded md:hover:bg-transparent md:hover:text-blue-400 md:p-0"
-                            >
-                                Relatos
                             </a>
                         </li>
                         <li>

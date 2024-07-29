@@ -4,30 +4,23 @@ function CardHome() {
     const card = [
         {
             id: 1,
-            enlace: "books",
-            name: "Libros",
-            description: "Sumérgete en un mundo de aventuras, conocimiento y emociones con nuestra amplia selección de libros.",
-            nameImage: "https://neuronup.com/wp-content/uploads/2023/03/benficios-de-la-lectura.jpg",
+            enlace: "product",
+            name: "Productos",
+            description: "Innovación a tu alcance, tecnología que transforma.",
+            nameImage: "https://img.freepik.com/vector-premium/conjunto-concepto-elementos-domesticos-electrodomesticos-equipo-cocina-productos-digitales-composicion-cuadrada-ilustracion-vectorial-plana_98292-2096.jpg",
         },
         {
             id: 2,
-            enlace: "films",
-            name: "Películas",
-            description: "Embárcate en un viaje cinematográfico a través de mi selección de películas. Desde emocionantes aventuras hasta dramas conmovedores y comedias hilarantes, tenemos algo para cada gusto y estado de ánimo.",
-            nameImage: "https://rccmedia.com.do/wp-content/uploads/2023/06/industria-del-cine.jpg",
-        },
-        {
-            id: 3,
-            enlace: "storis",
-            name: "Relatos",
-            description: "Déjate cautivar por la magia de la narrativa con mi colección de relatos.",
-            nameImage: "https://img.freepik.com/fotos-premium/pluma-tintero-escritorio_488220-35438.jpg",
+            enlace: "course",
+            name: "Cursos",
+            description: "Formación que transforma tu futuro.",
+            nameImage: "https://oei.int/downloads/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ada39e3ca828e4eec98acd60281f4ed73838f549/curso-virtual-jpg",
         },
         {
             id: 4,
             enlace: "services",
             name: "Servicios",
-            description: "Sumérgete en una experiencia única con mi colección de propuestas, donde cada servicio te lleva a descubrir un mundo de posibilidades y te brinda una experiencia inolvidable.",
+            description: "Sumérgete en una experiencia única con mi colección de propuestas, donde cada servicio te lleva a descubrir un mundo de posibilidades.",
             nameImage: "https://boldergroup.com/wp-content/uploads/2023/01/millennial-asia-businessmen-businesswomen-meeting-brainstorming-ideas-about-new-paperwork-project-colleagues-working-together-planning-success-strategy-enjoy-teamwork-small-modern-night-office-1024x576.jpg",
         }
 
@@ -40,7 +33,7 @@ function CardHome() {
                     key={item.id}
                     className="max-w-sm border rounded-lg shadow hover:shadow-lg  bg-gray-800 border-gray-700 transition duration-300"
                 >
-                    <Link to={`woody-${item.enlace.toLowerCase()}`}>
+                    <Link to={`woody-${item.enlace}-users`}>
                         <img
                             className="rounded-t-lg"
                             src={item.nameImage}
@@ -48,7 +41,7 @@ function CardHome() {
                         />
                     </Link>
                     <div className="p-5">
-                        <Link to={`woody-${item.enlace.toLowerCase()}`}>
+                        <Link to={`woody-${item.enlace}-users`}>
                             <h5 className="mb-2 text-2xl font-bold tracking-tight  text-white">
                                 {item.name}
                             </h5>

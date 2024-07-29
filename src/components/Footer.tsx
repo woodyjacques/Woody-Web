@@ -9,13 +9,13 @@ function Footer() {
                     <NavLink to="/" className="flex items-center mb-4 sm:mb-0">
                         <img src="https://res.cloudinary.com/dol6yfeoi/image/upload/v1711906350/unnamed_ulj6qg.jpg" className="h-8 mr-3 rounded-full" />
                         <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
-                            Woody
+                            Wjacques
                         </span>
                     </NavLink>
                     <ul className="flex flex-wrap items-center mb-6 text-sm font-medium sm:mb-0 text-gray-400">
                         <li>
                             <Link target="_blank"
-                                to="https://www.instagram.com/woody_jacques_/"
+                                to="https://www.instagram.com/wjacques1/"
                                 className="mr-4 hover:underline md:mr-6 "
                             >
                                 Instagram

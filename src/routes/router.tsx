@@ -9,9 +9,8 @@ import PasswordUpEmail from "../views/PasswordUpEmail";
 
 // componentes de cliente
 import Home from "../views/Home";
-import Books from "../views/Users/Books";
-import Films from "../views/Users/Films";
-import Storis from "../views/Users/Storis";
+import Product from "../views/Users/Product";
+import Course from "../views/Users/Course";
 import Services from "../views/Users/Services";
 import Perfil from "../views/Users/Perfil";
 
@@ -22,9 +21,8 @@ import AuthGuard from "../guards/auth.guard";
 // componentes de administrador
 import Adminstrador from "../views/Admin/Administrador";
 import UsersAd from "../views/Admin/UsersAd";
-import BooksAd from "../views/Admin/BooksAd";
-import FilmsAd from "../views/Admin/FilmsAd";
-import StorisAd from "../views/Admin/StorisAd";
+import CourseAd from "../views/Admin/CourseAd";
+import ProductAd from "../views/Admin/ProductAd";
 import ServiceAd from "../views/Admin/ServiceAd";
 import PerfilAd from "../views/Admin/PerfilAd";
 import CategoriesAd from "../views/Admin/Categories";
@@ -35,9 +33,8 @@ const router = createBrowserRouter([
 
   // Rutas de cliente
   { path:"/", element: <Home /> },
-  { path:"/woody-books-users", element: <Books /> },
-  { path:"/woody-films-users", element: <Films /> },
-  { path:"/woody-storis-users", element: <Storis /> },
+  { path:"/woody-product-users", element: <Product /> },
+  { path:"/woody-course-users", element: <Course /> },
   { path:"/woody-services-users", element: <Services /> },
   { path:"/woody-perfil-users", element: <Perfil /> },
 
@@ -54,9 +51,8 @@ const router = createBrowserRouter([
     element: <Adminstrador />,
     children: [
       { path: "/woody-users-administrador", element: <UsersAd /> },
-      { path: "/woody-books-administrador", element: <BooksAd /> },
-      { path: "/woody-films-administrador", element: <FilmsAd /> },
-      { path: "/woody-storis-administrador", element: <StorisAd /> },
+      { path: "/woody-course-administrador", element: <CourseAd /> },
+      { path: "/woody-product-administrador", element: <ProductAd /> },
       { path: "/woody-services-administrador", element: <ServiceAd /> },
       { path: "/woody-categories-administrador", element: <CategoriesAd /> },
       { path: "/woody-perfil-administrador", element: <PerfilAd /> },

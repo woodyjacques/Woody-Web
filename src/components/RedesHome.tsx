@@ -13,7 +13,7 @@ function RedesHome() {
                 <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
 
                     <Link
-                        to="https://www.instagram.com/woody_jacques_/"
+                        to="https://www.instagram.com/wjacques1/"
                         className="w-full sm:w-auto focus:ring-4 focus:outline-none text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 bg-gradient-to-r from-purple-700 via-pink-600 to-red-600 hover:from-purple-800 hover:via-pink-700 hover:to-red-700 focus:ring-red-700"
                         target="_blank"
                     >

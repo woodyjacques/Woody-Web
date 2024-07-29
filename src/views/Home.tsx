@@ -28,7 +28,7 @@ function Home() {
         <Header />
         <Section
           tittle="Inicio"
-          description="Un Universo de Inspiración Literaria, Cinematográfica e Historias"
+          description="Servicios y Tecnologías que Facilitan Tu Vida"
         />
       </div>
       <CardHome />
