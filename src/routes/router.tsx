@@ -51,8 +51,8 @@ const router = createBrowserRouter([
     element: <Adminstrador />,
     children: [
       { path: "/woody-users-administrador", element: <UsersAd /> },
-      { path: "/woody-course-administrador", element: <CourseAd /> },
       { path: "/woody-product-administrador", element: <ProductAd /> },
+      { path: "/woody-course-administrador", element: <CourseAd /> },
       { path: "/woody-services-administrador", element: <ServiceAd /> },
       { path: "/woody-categories-administrador", element: <CategoriesAd /> },
       { path: "/woody-perfil-administrador", element: <PerfilAd /> },

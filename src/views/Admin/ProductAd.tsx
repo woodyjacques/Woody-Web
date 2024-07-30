@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { handleClickEl, handleSubmitFilms, obtenerPeliculas } from "../../validation/Films";
+import { handleClickEl, handleSubmitProduct, obtenerProductos } from "../../validation/Product";
 import { obtenerCategorias } from "../../validation/Categories";
 import { Modal } from "../../components/toast";
 
@@ -11,7 +11,7 @@ interface Categoria {
     description: string;
 }
 
-function FilmsAd() {
+function ProductAd() {
     const token = localStorage.getItem("ACCESS_TOKEN");
     const paperes = localStorage.getItem("USER_SESSION");
 
@@ -19,12 +19,12 @@ function FilmsAd() {
 
     useEffect(() => {
         if (!token) {
-            navigate("/woody-books-users");
+            navigate("/woody-product-users");
         } else if (paperes) {
             const userSession = JSON.parse(paperes);
             const paper = userSession.paper;
             if (paper === "usuario") {
-                navigate("/woody-books-users");
+                navigate("/woody-product-users");
             }
         }
     }, [token, paperes, navigate]);
@@ -39,7 +39,6 @@ function FilmsAd() {
     const [categories, setCategories] = useState("");
     const [description, setDescription] = useState("");
     const [linkVer, setLinkVer] = useState("");
-    const [linkTrailer, setlinkTrailer] = useState("");
     const [linkImagen, setLinkImagen] = useState("");
 
     const toggleModal = () => {
@@ -48,26 +47,23 @@ function FilmsAd() {
         setCategories("");
         setDescription("");
         setLinkVer("");
-        setlinkTrailer("");
         setLinkImagen("");
     };
 
     const handleSubmit = (event: FormEvent) => {
-        handleSubmitFilms(
+        handleSubmitProduct(
             event,
             id,
             name,
             categories,
             description,
             linkVer,
-            linkTrailer,
             linkImagen,
             setId,
             setName,
             setCategories,
             setDescription,
             setLinkVer,
-            setlinkTrailer,
             setLinkImagen
         );
     };
@@ -82,7 +78,7 @@ function FilmsAd() {
     useEffect(() => {
         obtenerCategorias()
             .then((data: Categoria[]) => {
-                const Filtradas = data.filter(fil => fil.element === "pelicula");
+                const Filtradas = data.filter(fil => fil.element === "producto");
                 setCate(Filtradas);
             })
             .catch((error) => {
@@ -90,14 +86,14 @@ function FilmsAd() {
             });
     }, []);
 
-    const [film, setFilm] = useState<
-        { id: number; name: string; categories: string; description: string, linkVer: string, linkTrailer: string, linkImagen: string }[]
+    const [product, setProduct] = useState<
+        { id: number; name: string; categories: string; description: string, linkVer: string, linkImagen: string }[]
     >([]);
 
     useEffect(() => {
-        obtenerPeliculas()
+        obtenerProductos()
             .then((data) => {
-                setFilm(data);
+                setProduct(data);
             })
             .catch((error) => {
                 console.error(error);
@@ -110,7 +106,6 @@ function FilmsAd() {
         categories: string,
         description: string,
         linkVer: string,
-        linkTrailer: string,
         linkImagen: string,
     ) => {
         setId(id);
@@ -118,7 +113,6 @@ function FilmsAd() {
         setCategories(categories);
         setDescription(description);
         setLinkVer(linkVer);
-        setlinkTrailer(linkTrailer);
         setLinkImagen(linkImagen);
         toggleModalAct();
     };
@@ -135,7 +129,7 @@ function FilmsAd() {
     return (
         <div className=" bg-gray-900 p-4 border-2 border-gray-200 border-dashed rounded-lg mt-14 shadow-md">
             <div className="text-black text-2xl mb-4 p-4 rounded-lg shadow-lg bg-gray-200 flex items-center justify-between">
-                <p className="text-center">Películas</p>
+                <p className="text-center">Productos</p>
                 <button
                     className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-700 font-medium rounded-lg text-sm px-5 py-2.5" onClick={toggleModal}
                 >
@@ -162,15 +156,12 @@ function FilmsAd() {
                                 LinkVer
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                LinkTrailer
-                            </th>
-                            <th scope="col" className="px-6 py-3">
                                 Acción
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        {film.map((film, index) => (
+                        {product.map((product, index) => (
                             <tr
                                 key={index}
                                 className=" border-b bg-gray-900 border-gray-700"
@@ -179,31 +170,29 @@ function FilmsAd() {
                                     scope="row"
                                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                                 >
-                                    <img className="h-12 w-18 rounded-md" src={film.linkImagen} alt="" />
+                                    <img className="h-12 w-18 rounded-md" src={product.linkImagen} alt="" />
                                 </th>
                                 <th
                                     scope="row"
                                     className="px-6 py-4 font-medium whitespace-nowrap text-white"
                                 >
-                                    {film.name}
+                                    {product.name}
                                 </th>
-                                <td className="px-6 py-4">{film.categories}</td>
-                                <td className="px-6 py-4">{film.description.slice(0, 50)}...</td>
-                                <td className="px-6 py-4">{film.linkVer.slice(0, 50)}...</td>
-                                <td className="px-6 py-4">{film.linkTrailer.slice(0, 50)}...</td>
+                                <td className="px-6 py-4">{product.categories}</td>
+                                <td className="px-6 py-4">{product.description.slice(0, 50)}...</td>
+                                <td className="px-6 py-4">{product.linkVer.slice(0, 50)}...</td>
                                 <td className="px-6 py-4">
                                     <a
                                         href="#"
                                         className="font-medium text-blue-500 hover:underline"
                                         onClick={() =>
                                             handleActualizar(
-                                                film.id,
-                                                film.name,
-                                                film.categories,
-                                                film.description,
-                                                film.linkVer,
-                                                film.linkTrailer,
-                                                film.linkImagen
+                                                product.id,
+                                                product.name,
+                                                product.categories,
+                                                product.description,
+                                                product.linkVer,
+                                                product.linkImagen
                                             )
                                         }
                                     >
@@ -217,12 +206,12 @@ function FilmsAd() {
                                     </a>
                                     <Modal
                                         onConfirm={() => {
-                                            handleClickEl(film);
+                                            handleClickEl(product);
                                             showModal();
                                         }}
                                         isVisible={isModalVisible}
                                         onClose={showModal}
-                                        message="¿Estás seguro de eliminar la película?"
+                                        message="¿Estás seguro de eliminar el producto?"
                                     />
                                 </td>
                             </tr>
@@ -263,7 +252,7 @@ function FilmsAd() {
                             </button>
                             <div className="px-6 py-6 lg:px-8">
                                 <h3 className="mb-4 text-xl font-medium text-white">
-                                    Películas
+                                    Productos
                                 </h3>
 
                                 <p
@@ -336,20 +325,6 @@ function FilmsAd() {
                                                 />
                                             </div>
                                         </div>
-                                        <div>
-                                            <label className="block mb-2 text-sm font-medium text-white">
-                                                Trailer
-                                            </label>
-                                            <div className="relative">
-                                                <input
-                                                    type="text"
-                                                    className="bg-gray-600 border border-gray-500 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                                                    placeholder="Link de ver"
-                                                    value={linkTrailer}
-                                                    onChange={(e) => setlinkTrailer(e.target.value)}
-                                                />
-                                            </div>
-                                        </div>
                                     </div>
 
                                     <div>
@@ -384,5 +359,5 @@ function FilmsAd() {
     );
 }
 
-export default FilmsAd;
+export default ProductAd;
 

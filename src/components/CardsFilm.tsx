@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { obtenerCategorias } from "../validation/Categories";
-import { obtenerPeliculas } from "../validation/Films";
+import { obtenerPeliculas } from "../validation/Product";
 
 interface Categoria {
     id: number;

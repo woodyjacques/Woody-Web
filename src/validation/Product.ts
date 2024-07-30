@@ -4,21 +4,19 @@ import axios from "axios";
 const api = "https://woody-backend.vercel.app";
 const token = localStorage.getItem("ACCESS_TOKEN");
 
-export const handleSubmitFilms = async (
+export const handleSubmitProduct = async (
     event: FormEvent,
     id: number,
     name: string,
     categories: string,
     description: string,
     linkVer: string,
-    linkTrailer: string,
     linkImagen: string,
     setId: React.Dispatch<React.SetStateAction<number>>,
     setName: React.Dispatch<React.SetStateAction<string>>,
     setCategories: React.Dispatch<React.SetStateAction<string>>,
     setDescription: React.Dispatch<React.SetStateAction<string>>,
     setLinkVer: React.Dispatch<React.SetStateAction<string>>,
-    setlinkTrailer: React.Dispatch<React.SetStateAction<string>>,
     setLinkImagen: React.Dispatch<React.SetStateAction<string>>
 ) => {
     event.preventDefault();
@@ -45,11 +43,6 @@ export const handleSubmitFilms = async (
         return null;
     }
 
-    if (linkTrailer === "") {
-        mostrarMensaje("Ingrese el link trailer", MensajeErr);
-        return null;
-    }
-
     if (linkImagen === "") {
         mostrarMensaje("Ingrese el link imagen", MensajeErr);
         return null;
@@ -61,14 +54,13 @@ export const handleSubmitFilms = async (
         setCategories("");
         setDescription("");
         setLinkVer("");
-        setlinkTrailer("");
         setLinkImagen("");
     }
 
     try {
         const method = id === 0 ? 'post' : 'patch';
-        const url = id === 0 ? `${api}/film` : `${api}/film/${id}`;
-        const response = await axios[method](url, { name, description, categories, linkVer, linkTrailer, linkImagen }, {
+        const url = id === 0 ? `${api}/product` : `${api}/product/${id}`;
+        const response = await axios[method](url, { name, description, categories, linkVer,  linkImagen }, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -82,21 +74,21 @@ export const handleSubmitFilms = async (
 
 };
 
-export async function obtenerPeliculas() {
+export async function obtenerProductos() {
     try {
-        const response = await axios.get(`${api}/film`);
+        const response = await axios.get(`${api}/product`);
         return response.data;
     } catch (error) {
         throw error;
     }
 }
 
-export function handleClickEl(film: any) {
-    const id = film.id;
+export function handleClickEl(product: any) {
+    const id = product.id;
     const MensajeNegToast = document.getElementById("toast-negative");
   
     axios
-      .delete(`${api}/film/${id}`, {
+      .delete(`${api}/product/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

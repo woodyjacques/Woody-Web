@@ -86,10 +86,10 @@ function Adminstrador() {
                         </li>
                         <li>
                             <NavLink
-                                to="/woody-books-administrador"
+                                to="/woody-product-administrador"
                                 className={`flex items-center p-2 text-white rounded-lg hover:bg-gray-800 `}
                                 onClick={toggleAside}
-                            ><span className="flex-1 ml-3 whitespace-nowrap">Libros</span>
+                            ><span className="flex-1 ml-3 whitespace-nowrap">Productos</span>
                             </NavLink>
                         </li>
                         <li>
