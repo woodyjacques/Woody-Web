@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { obtenerCategorias } from "../validation/Categories";
-import { obtenerPeliculas } from "../validation/Product";
+import { obtenerProductos } from "../validation/Product";
 
 interface Categoria {
     id: number;
@@ -48,7 +48,7 @@ function CardsFilms() {
     };
 
     useEffect(() => {
-        obtenerPeliculas()
+        obtenerProductos()
             .then((data) => {
                 const filteredArticles = data.filter((sto: any) =>
                     sto.categories.includes(selectedCategory) &&
