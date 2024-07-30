@@ -9,13 +9,12 @@ interface Categoria {
     description: string;
 }
 
-function CardsBook() {
+function CardsCours() {
 
-    const tokens = localStorage.getItem("ACCESS_TOKEN");
     const [filter, setFilter] = useState("");
 
-    const [books, setBook] = useState<
-        { id: number; name: string; categories: string; description: string, linkLeer: string, linkImagen: string }[]
+    const [cours, setCours] = useState<
+        { id: number; name: string; categories: string; description: string, linkVer: string, linkImagen: string }[]
     >([]);
 
     const [categories, setCategories] = useState<
@@ -29,7 +28,7 @@ function CardsBook() {
     useEffect(() => {
         obtenerCategorias()
             .then((data: Categoria[]) => {
-                const Filtradas = data.filter(fil => fil.element === "libro");
+                const Filtradas = data.filter(fil => fil.element === "curso");
                 setCategories(Filtradas);
             })
             .catch((error) => {
@@ -55,7 +54,7 @@ function CardsBook() {
                     article.name.toLowerCase().includes(filter.toLowerCase())
                 );
 
-                setBook(filteredArticles);
+                setCours(filteredArticles);
             })
             .catch((error) => {
                 console.error(error);
@@ -94,10 +93,10 @@ function CardsBook() {
             </div>
             <div className="flex flex-wrap justify-center gap-8 mt-10 ml-4 mr-4">
 
-                {books.length === 0 ? (
+                {cours.length === 0 ? (
                     <div className="flex items-center h-full">
                         <p className="mr-4 mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-3xl text-white">
-                            Cargando los libros...
+                            Cargando los cursos...
                         </p>
                         <svg
                             aria-hidden="true"
@@ -117,42 +116,31 @@ function CardsBook() {
                         </svg>
                     </div>
                 ) : (
-                    books.map((book, index) => (
+                    cours.map((cours, index) => (
                         <div
                             key={index}
                             className=" hover:bg-gray-700 w-full max-w-sm border rounded-lg shadow bg-gray-800 border-gray-700 h-full"
                         >
                             <div>
                                 <img className="rounded-t-lg h-80 w-full"
-                                    src={book.linkImagen}
+                                    src={cours.linkImagen}
                                 />
                             </div>
                             <div className="px-5 pb-5">
                                 <div>
                                     <h5 className="text-xl font-semibold tracking-tight  text-white">
-                                        {book.name}
+                                        {cours.name}
                                     </h5>
                                 </div>
-                                <p className="text-white"> {book.description}</p>
+                                <p className="text-white"> {cours.description}</p>
                                 <div className="flex items-center justify-between">
-                                    {tokens ? (
-                                        <a href={`/woody-donacion?link=${encodeURIComponent(book.linkLeer)}`}>
-                                            <div
-                                                className="cursor-pointer text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
-                                            >
-                                                Leer
-                                            </div>
-                                        </a>
-                                    ) : (
-                                        <a href="/woody-sesion">
-                                            <div
-                                                className="cursor-pointer text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
-                                            >
-                                                Leer
-                                            </div>
-                                        </a>
-                                    )}
-
+                                    <a href={cours.linkVer} target="_blank">
+                                        <div
+                                            className="cursor-pointer text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
+                                        >
+                                            Comprar
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -163,4 +151,4 @@ function CardsBook() {
     );
 }
 
-export default CardsBook;
+export default CardsCours;

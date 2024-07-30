@@ -4,7 +4,7 @@ import { Section } from "../../components/Section";
 import Header from "../../components/header";
 import HeaderSesion from "../../components/headerSesion";
 import { useNavigate } from "react-router-dom";
-import CardsBook from "../../components/CardsCours";
+import CardsProduct from "../../components/CardsProduct";
 
 export interface UserData {
   name: string;
@@ -62,7 +62,7 @@ function Product() {
           description="Bienvenido a mi colección de electrodomésticos, donde la última tecnología y el diseño práctico se unen para mejorar tu hogar y simplificar tu vida diaria."
         />
       </div>
-      <CardsBook/>
+      <CardsProduct/>
       <Footer />
     </div>
   );

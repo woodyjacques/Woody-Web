@@ -4,7 +4,7 @@ import { Section } from "../../components/Section";
 import Header from "../../components/header";
 import HeaderSesion from "../../components/headerSesion";
 import { useNavigate } from "react-router-dom";
-import CardsFilms from "../../components/CardsProduct";
+import CardsCours from "../../components/CardsCours";
 
 export interface UserData {
   name: string;
@@ -33,11 +33,11 @@ function Films() {
       <div className="flex-grow">
         {token ? <HeaderSesion /> : <Header />}
         <Section
-          tittle="Películas"
-          description="Bienvenido a mi selección de películas! Sumérgete en un mundo de emociones y experiencias cinematográficas que te llevarán a través de aventuras épicas, dramas conmovedores y comedias hilarantes."
+          tittle="Cursos"
+          description="¡Bienvenidos a las lecciones! Nos complace tenerlos aquí y estamos entusiasmados de embarcarnos juntos en este viaje de aprendizaje. "
         />
       </div>
-      <CardsFilms />
+      <CardsCours />
       <Footer />
     </div>
 

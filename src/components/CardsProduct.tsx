@@ -9,13 +9,12 @@ interface Categoria {
     description: string;
 }
 
-function CardsFilms() {
+function CardsProduct() {
 
-    const tokens = localStorage.getItem("ACCESS_TOKEN");
     const [filter, setFilter] = useState("");
 
-    const [film, setFilms] = useState<
-        { id: number; name: string; categories: string; description: string, linkVer: string, linkTrailer: string, linkImagen: string }[]
+    const [product, setProduct] = useState<
+        { id: number; name: string; categories: string; description: string, linkVer: string, linkImagen: string }[]
     >([]);
 
     const [categories, setCategories] = useState<
@@ -29,7 +28,7 @@ function CardsFilms() {
     useEffect(() => {
         obtenerCategorias()
             .then((data: Categoria[]) => {
-                const Filtradas = data.filter(fil => fil.element === "pelicula");
+                const Filtradas = data.filter(fil => fil.element === "producto");
                 setCategories(Filtradas);
             })
             .catch((error) => {
@@ -55,7 +54,7 @@ function CardsFilms() {
                     sto.name.toLowerCase().includes(filter.toLowerCase())
                 );
 
-                setFilms(filteredArticles);
+                setProduct(filteredArticles);
             })
             .catch((error) => {
                 console.error(error);
@@ -94,10 +93,10 @@ function CardsFilms() {
             </div>
             <div className="flex flex-wrap justify-center gap-8 mt-10 ml-4 mr-4">
 
-                {film.length === 0 ? (
+                {product.length === 0 ? (
                     <div className="flex items-center h-full">
                         <p className="mr-4 mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-3xl text-white">
-                            Cargando las películas...
+                            Cargando los productos...
                         </p>
                         <svg
                             aria-hidden="true"
@@ -117,60 +116,31 @@ function CardsFilms() {
                         </svg>
                     </div>
                 ) : (
-                    film.map((film, index) => (
+                    product.map((product, index) => (
                         <div
                             key={index}
                             className=" hover:bg-gray-700 w-full max-w-sm border rounded-lg shadow bg-gray-800 border-gray-700 h-full"
                         >
                             <div>
                                 <img className="rounded-t-lg h-80 w-full"
-                                    src={film.linkImagen}
+                                    src={product.linkImagen}
                                 />
                             </div>
                             <div className="px-5 pb-5">
                                 <div>
                                     <h5 className="text-xl font-semibold tracking-tight  text-white">
-                                        {film.name}
+                                        {product.name}
                                     </h5>
                                 </div>
-                                <p className="text-white"> {film.description}</p>
+                                <p className="text-white"> {product.description}</p>
                                 <div className="flex items-center justify-between">
-                                    {tokens ? (
-                                        <a href={`/woody-donacion?link=${encodeURIComponent(film.linkVer)}`}>
-                                            <div
-                                                className="cursor-pointer text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
-                                            >
-                                                Descargar
-                                            </div>
-                                        </a>
-                                    ) : (
-                                        <a href="/woody-sesion">
-                                            <div
-                                                className="cursor-pointer text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
-                                            >
-                                                Descargar
-                                            </div>
-                                        </a>
-                                    )}
-
-                                    {tokens ? (
-                                        <a href={`/woody-donacion?link=${encodeURIComponent(film.linkTrailer)}`}>
-                                            <div
-                                                className="cursor-pointer text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
-                                            >
-                                                Trailer
-                                            </div>
-                                        </a>
-                                    ) : (
-                                        <a href="/woody-sesion">
-                                            <div
-                                                className="cursor-pointer text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
-                                            >
-                                                Trailer
-                                            </div>
-                                        </a>
-                                    )}
-
+                                    <a href={product.linkVer} target="_blank">
+                                        <div
+                                            className="cursor-pointer text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
+                                        >
+                                            Comprar 
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -181,4 +151,4 @@ function CardsFilms() {
     );
 }
 
-export default CardsFilms;
+export default CardsProduct;

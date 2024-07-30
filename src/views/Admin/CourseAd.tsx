@@ -154,7 +154,7 @@ function CourseAd() {
                                 Descripción
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                LinkLeer
+                                LinkVer
                             </th>
                             <th scope="col" className="px-6 py-3">
                                 Acción
