@@ -4,7 +4,7 @@ import { Section } from "../../components/Section";
 import Header from "../../components/header";
 import HeaderSesion from "../../components/headerSesion";
 import { useNavigate } from "react-router-dom";
-import CardsBook from "../../components/CardsBook";
+import CardsBook from "../../components/CardsCours";
 
 export interface UserData {
   name: string;

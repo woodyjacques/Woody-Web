@@ -253,7 +253,7 @@ function CourseAd() {
                             </button>
                             <div className="px-6 py-6 lg:px-8">
                                 <h3 className="mb-4 text-xl font-medium text-white">
-                                    Libros
+                                    Cursos
                                 </h3>
 
                                 <p
@@ -273,7 +273,7 @@ function CourseAd() {
                                             <input
                                                 type="text"
                                                 className="bg-gray-600 border border-gray-500 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                                                placeholder="Nombre del libro"
+                                                placeholder="Nombre del curso"
                                                 value={name}
                                                 onChange={(e) => setName(e.target.value)}
                                             />
@@ -304,7 +304,7 @@ function CourseAd() {
                                             Descripción
                                         </label>
                                         <textarea
-                                            placeholder="Descripción del libro"
+                                            placeholder="Descripción del curso"
                                             className="bg-gray-600 border border-gray-500 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
                                             value={description}
                                             onChange={(e) => setDescription(e.target.value)}>
@@ -313,7 +313,7 @@ function CourseAd() {
 
                                     <div>
                                         <label className="block mb-2 text-sm font-medium text-white">
-                                            Leer
+                                            Ver
                                         </label>
                                         <div className="relative">
                                             <input
