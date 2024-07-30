@@ -273,7 +273,7 @@ function ProductAd() {
                                             <input
                                                 type="text"
                                                 className="bg-gray-600 border border-gray-500 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                                                placeholder="Nombre de la película"
+                                                placeholder="Nombre del producto"
                                                 value={name}
                                                 onChange={(e) => setName(e.target.value)}
                                             />
@@ -306,7 +306,7 @@ function ProductAd() {
                                             Descripción
                                         </label>
                                         <textarea
-                                            placeholder="Descripción de la película"
+                                            placeholder="Descripción del producto"
                                             className="bg-gray-600 border border-gray-500 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
                                             value={description}
                                             onChange={(e) => setDescription(e.target.value)}>
