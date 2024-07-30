@@ -76,7 +76,7 @@ export const handleSubmitCours = async (
 
 export async function obtenerCursos() {
     try {
-        const response = await axios.get(`${api}/course`);
+        const response = await axios.get(`${api}/cours`);
         return response.data;
     } catch (error) {
         throw error;
