@@ -59,7 +59,7 @@ export const handleSubmitCours = async (
 
     try {
         const method = id === 0 ? 'post' : 'patch';
-        const url = id === 0 ? `${api}/course` : `${api}/course/${id}`;
+        const url = id === 0 ? `${api}/cours` : `${api}/cours/${id}`;
         const response = await axios[method](url, { name, description, categories, linkVer, linkImagen }, {
             headers: {
                 Authorization: `Bearer ${token}`,
