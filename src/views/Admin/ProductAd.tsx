@@ -264,6 +264,7 @@ function ProductAd() {
                                     className=" hidden text-green-500 text-sm font-medium rounded-lg text-center"
                                 ></p>
                                 <form className="space-y-6" onSubmit={handleSubmit}>
+
                                     <div>
                                         <label className="block mb-2 text-sm font-medium text-white">
                                             Nombre
@@ -278,6 +279,7 @@ function ProductAd() {
                                             />
                                         </div>
                                     </div>
+
                                     <div>
                                         <label className="block mb-2 text-sm font-medium text-white">
                                             Categorías
@@ -298,6 +300,7 @@ function ProductAd() {
                                             </select>
                                         </div>
                                     </div>
+
                                     <div>
                                         <label className="block mb-2 text-sm font-medium text-gray-500">
                                             Descripción
@@ -310,20 +313,18 @@ function ProductAd() {
                                         </textarea>
                                     </div>
 
-                                    <div className="flex">
-                                        <div className="mr-4">
-                                            <label className="block mb-2 text-sm font-medium text-white">
-                                                Ver
-                                            </label>
-                                            <div className="relative">
-                                                <input
-                                                    type="text"
-                                                    className="bg-gray-600 border border-gray-500 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                                                    placeholder="Link de ver"
-                                                    value={linkVer}
-                                                    onChange={(e) => setLinkVer(e.target.value)}
-                                                />
-                                            </div>
+                                    <div>
+                                        <label className="block mb-2 text-sm font-medium text-white">
+                                            Ver
+                                        </label>
+                                        <div className="relative">
+                                            <input
+                                                type="text"
+                                                className="bg-gray-600 border border-gray-500 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
+                                                placeholder="Link de ver"
+                                                value={linkVer}
+                                                onChange={(e) => setLinkVer(e.target.value)}
+                                            />
                                         </div>
                                     </div>
 
