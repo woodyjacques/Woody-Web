@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { obtenerCategorias } from "../validation/Categories";
-import { obtenerLibros } from "../validation/Books";
+import { obtenerCursos } from "../validation/Cours";
 
 interface Categoria {
     id: number;
@@ -48,7 +48,7 @@ function CardsBook() {
     };
 
     useEffect(() => {
-        obtenerLibros()
+        obtenerCursos()
             .then((data) => {
                 const filteredArticles = data.filter((article: any) =>
                     article.categories.includes(selectedCategory) &&

@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { handleClickEl, handleSubmitBooks, obtenerLibros } from "../../validation/Books";
+import { handleClickEl, handleSubmitCours, obtenerCursos } from "../../validation/Cours";
 import { obtenerCategorias } from "../../validation/Categories";
 import { Modal } from "../../components/toast";
 
@@ -11,7 +11,7 @@ interface Categoria {
     description: string;
 }
 
-function BooksAd() {
+function CourseAd() {
     const token = localStorage.getItem("ACCESS_TOKEN");
     const paperes = localStorage.getItem("USER_SESSION");
 
@@ -38,7 +38,7 @@ function BooksAd() {
     const [name, setName] = useState("");
     const [categories, setCategories] = useState("");
     const [description, setDescription] = useState("");
-    const [linkLeer, setLinkLeer] = useState("");
+    const [linkVer, setLinkVer] = useState("");
     const [linkImagen, setLinkImagen] = useState("");
 
     const toggleModal = () => {
@@ -46,24 +46,24 @@ function BooksAd() {
         setName("");
         setCategories("");
         setDescription("");
-        setLinkLeer("");
+        setLinkVer("");
         setLinkImagen("");
     };
 
     const handleSubmit = (event: FormEvent) => {
-        handleSubmitBooks(
+        handleSubmitCours(
             event,
             id,
             name,
             categories,
             description,
-            linkLeer,
+            linkVer,
             linkImagen,
             setId,
             setName,
             setCategories,
             setDescription,
-            setLinkLeer,
+            setLinkVer,
             setLinkImagen
         );
     };
@@ -86,14 +86,14 @@ function BooksAd() {
             });
     }, []);
 
-    const [books, setBook] = useState<
-        { id: number; name: string; categories: string; description: string, linkLeer: string, linkImagen: string }[]
+    const [cours, setCours] = useState<
+        { id: number; name: string; categories: string; description: string, linkVer: string, linkImagen: string }[]
     >([]);
 
     useEffect(() => {
-        obtenerLibros()
+        obtenerCursos()
             .then((data) => {
-                setBook(data);
+                setCours(data);
             })
             .catch((error) => {
                 console.error(error);
@@ -105,14 +105,14 @@ function BooksAd() {
         name: string,
         categories: string,
         description: string,
-        linkLeer: string,
+        linkVer: string,
         linkImagen: string,
     ) => {
         setId(id);
         setName(name);
         setCategories(categories);
         setDescription(description);
-        setLinkLeer(linkLeer);
+        setLinkVer(linkVer);
         setLinkImagen(linkImagen);
         toggleModalAct();
     };
@@ -130,7 +130,7 @@ function BooksAd() {
     return (
         <div className=" bg-gray-900 p-4 border-2 border-gray-200 border-dashed rounded-lg mt-14 shadow-md">
             <div className="text-black text-2xl mb-4 p-4 rounded-lg shadow-lg bg-gray-200 flex items-center justify-between">
-                <p className="text-center">Libros</p>
+                <p className="text-center">Cursos</p>
                 <button
                     className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-700 font-medium rounded-lg text-sm px-5 py-2.5" onClick={toggleModal}
                 >
@@ -162,7 +162,7 @@ function BooksAd() {
                         </tr>
                     </thead>
                     <tbody>
-                        {books.map((book, index) => (
+                        {cours.map((cours, index) => (
                             <tr
                                 key={index}
                                 className=" border-b bg-gray-900 border-gray-700"
@@ -171,29 +171,29 @@ function BooksAd() {
                                     scope="row"
                                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                                 >
-                                    <img className="h-12 w-18 rounded-md" src={book.linkImagen} alt="" />
+                                    <img className="h-12 w-18 rounded-md" src={cours.linkImagen} alt="" />
                                 </th>
                                 <th
                                     scope="row"
                                     className="px-6 py-4 font-medium whitespace-nowrap text-white"
                                 >
-                                    {book.name}
+                                    {cours.name}
                                 </th>
-                                <td className="px-6 py-4">{book.categories}</td>
-                                <td className="px-6 py-4">{book.description.slice(0, 50)}...</td>
-                                <td className="px-6 py-4">{book.linkLeer.slice(0, 30)}...</td>
+                                <td className="px-6 py-4">{cours.categories}</td>
+                                <td className="px-6 py-4">{cours.description.slice(0, 50)}...</td>
+                                <td className="px-6 py-4">{cours.linkVer.slice(0, 30)}...</td>
                                 <td className="px-6 py-4">
                                     <a
                                         href="#"
                                         className="font-medium text-blue-500 hover:underline"
                                         onClick={() =>
                                             handleActualizar(
-                                                book.id,
-                                                book.name,
-                                                book.categories,
-                                                book.description,
-                                                book.linkLeer,
-                                                book.linkImagen
+                                                cours.id,
+                                                cours.name,
+                                                cours.categories,
+                                                cours.description,
+                                                cours.linkVer,
+                                                cours.linkImagen
                                             )
                                         }
                                     >
@@ -207,7 +207,7 @@ function BooksAd() {
                                     </a>
                                     <Modal
                                         onConfirm={() => {
-                                            handleClickEl(book);
+                                            handleClickEl(cours);
                                             showModal();
                                         }}
                                         isVisible={isModalVisible}
@@ -320,8 +320,8 @@ function BooksAd() {
                                                 type="text"
                                                 className="bg-gray-600 border border-gray-500 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
                                                 placeholder="Link de ver"
-                                                value={linkLeer}
-                                                onChange={(e) => setLinkLeer(e.target.value)}
+                                                value={linkVer}
+                                                onChange={(e) => setLinkVer(e.target.value)}
                                             />
                                         </div>
                                     </div>
@@ -358,5 +358,5 @@ function BooksAd() {
     );
 }
 
-export default BooksAd;
+export default CourseAd;
 

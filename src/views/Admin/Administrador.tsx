@@ -94,18 +94,10 @@ function Adminstrador() {
                         </li>
                         <li>
                             <NavLink
-                                to="/woody-films-administrador"
+                                to="/woody-course-administrador"
                                 className={`flex items-center p-2 text-white rounded-lg hover:bg-gray-800 `}
                                 onClick={toggleAside}
-                            ><span className="flex-1 ml-3 whitespace-nowrap">Películas</span>
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/woody-storis-administrador"
-                                className={`flex items-center p-2 text-white rounded-lg hover:bg-gray-800 `}
-                                onClick={toggleAside}
-                            ><span className="flex-1 ml-3 whitespace-nowrap">Relatos</span>
+                            ><span className="flex-1 ml-3 whitespace-nowrap">Cursos</span>
                             </NavLink>
                         </li>
                         <li>
