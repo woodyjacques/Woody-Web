@@ -11,12 +11,12 @@ function CategoriesAd() {
 
     useEffect(() => {
         if (!token) {
-            navigate("/woody-books-users");
+            navigate("/woody-product-users");
         } else if (paperes) {
             const userSession = JSON.parse(paperes);
             const paper = userSession.paper;
             if (paper === "usuario") {
-                navigate("/woody-books-users");
+                navigate("/woody-product-users");
             }
         }
     }, [token, paperes, navigate]);
@@ -238,9 +238,8 @@ function CategoriesAd() {
                                                 onChange={(e) => setElement(e.target.value)}
                                             >
                                                 <option value="">Elementos</option>
-                                                <option value="libro">Libro</option>
-                                                <option value="pelicula">Película</option>
-                                                <option value="relato">Relato</option>
+                                                <option value="producto">Productos</option>
+                                                <option value="curso">Cursos</option>
                                             </select>
                                         </div>
                                     </div>

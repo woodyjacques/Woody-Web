@@ -19,12 +19,12 @@ function BooksAd() {
 
     useEffect(() => {
         if (!token) {
-            navigate("/woody-books-users");
+            navigate("/woody-product-users");
         } else if (paperes) {
             const userSession = JSON.parse(paperes);
             const paper = userSession.paper;
             if (paper === "usuario") {
-                navigate("/woody-books-users");
+                navigate("/woody-product-users");
             }
         }
     }, [token, paperes, navigate]);
@@ -78,7 +78,7 @@ function BooksAd() {
     useEffect(() => {
         obtenerCategorias()
             .then((data: Categoria[]) => {
-                const Filtradas = data.filter(fil => fil.element === "libro");
+                const Filtradas = data.filter(fil => fil.element === "curso");
                 setCate(Filtradas);
             })
             .catch((error) => {

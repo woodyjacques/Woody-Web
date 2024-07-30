@@ -23,7 +23,7 @@ function Register() {
 
     useEffect(() => {
         if (token) {
-            navigate("/woody-books-users");
+            navigate("/woody-product-users");
         }
     }, [token, navigate]);
 

@@ -10,12 +10,12 @@ function UsersAd() {
 
     useEffect(() => {
         if (!token) {
-            navigate("/woody-books-users");
+            navigate("/woody-product-users");
         } else if (paperes) {
             const userSession = JSON.parse(paperes);
             const paper = userSession.paper;
             if (paper === "usuario") {
-                navigate("/woody-books-users");
+                navigate("/woody-product-users");
             }
         }
     }, [token, paperes, navigate]);
