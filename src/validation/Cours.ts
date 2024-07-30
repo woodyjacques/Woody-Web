@@ -59,7 +59,7 @@ export const handleSubmitCours = async (
 
     try {
         const method = id === 0 ? 'post' : 'patch';
-        const url = id === 0 ? `${api}/cours` : `${api}/cours/${id}`;
+        const url = id === 0 ? `${api}/course` : `${api}/course/${id}`;
         const response = await axios[method](url, { name, description, categories, linkVer, linkImagen }, {
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -76,15 +76,15 @@ export const handleSubmitCours = async (
 
 export async function obtenerCursos() {
     try {
-        const response = await axios.get(`${api}/cours`);
+        const response = await axios.get(`${api}/course`);
         return response.data;
     } catch (error) {
         throw error;
     }
 }
 
-export function handleClickEl(film: any) {
-    const id = film.id;
+export function handleClickEl(cours: any) {
+    const id = cours.id;
     const MensajeNegToast = document.getElementById("toast-negative");
 
     axios
