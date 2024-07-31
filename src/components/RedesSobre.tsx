@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function RedesHome() {
+function RedesSobre() {
     return (
         <div className="mb-10 mt-10">
             <div className="w-full p-4 text-center border rounded-lg shadow sm:p-8 bg-gray-800 border-gray-700">
@@ -90,4 +90,4 @@ function RedesHome() {
     );
 }
 
-export default RedesHome;
+export default RedesSobre;

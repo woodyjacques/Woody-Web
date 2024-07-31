@@ -8,11 +8,10 @@ import Emailverifi from "../views/emailVerifi";
 import PasswordUpEmail from "../views/PasswordUpEmail";
 
 // componentes de cliente
-import Home from "../views/Home";
+import Sobre from "../views/Sobre";
 import Product from "../views/Users/Product";
 import Course from "../views/Users/Course";
 import Services from "../views/Users/Services";
-import Perfil from "../views/Users/Perfil";
 
 // componentes de verificacion
 import Error404 from "../views/Error404";
@@ -26,17 +25,14 @@ import ProductAd from "../views/Admin/ProductAd";
 import ServiceAd from "../views/Admin/ServiceAd";
 import PerfilAd from "../views/Admin/PerfilAd";
 import CategoriesAd from "../views/Admin/Categories";
-import Donacion from "../views/Donaciones";
-import Apobacion from "../views/Aprovacion";
 
 const router = createBrowserRouter([
 
   // Rutas de cliente
-  { path:"/", element: <Home /> },
   { path:"/woody-product-users", element: <Product /> },
   { path:"/woody-course-users", element: <Course /> },
   { path:"/woody-services-users", element: <Services /> },
-  { path:"/woody-perfil-users", element: <Perfil /> },
+  { path:"/woody-sobre-users", element: <Sobre /> },
 
   // Rutas generales 
   { path:"/woody-sesion", element: <Sesion /> },
@@ -59,8 +55,6 @@ const router = createBrowserRouter([
     ]
   },
 
-  { path: "/woody-donacion", element: <Donacion/> },
-  { path: "/woody-aprobacion", element: <Apobacion/> },
   { path: "/authguard", element: <AuthGuard /> },
   { path: "*", element: <Error404 /> },
 ]);

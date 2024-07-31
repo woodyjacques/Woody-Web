@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function CardHome() {
+function CardSobre() {
     const card = [
         {
             id: 1,
@@ -60,4 +60,4 @@ function CardHome() {
     );
 }
 
-export default CardHome;
+export default CardSobre;

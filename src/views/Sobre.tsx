@@ -1,13 +1,13 @@
 import { useEffect } from "react";
-import CardHome from "../components/CardHome";
+import CardSobre from "../components/CardSobre";
 import Contacto from "../components/Contacto";
 import Footer from "../components/Footer";
-import RedesHome from "../components/RedesHome";
+import RedesSobre from "../components/RedesSobre";
 import { Section } from "../components/Section";
 import Header from "../components/header";
 import { useNavigate } from "react-router-dom";
 
-function Home() {
+function Sobre() {
   const navigate = useNavigate();
 
   const token = localStorage.getItem("ACCESS_TOKEN");
@@ -27,16 +27,16 @@ function Home() {
       <div className="flex-grow">
         <Header />
         <Section
-          tittle="Inicio"
+          tittle="Sobre mi"
           description="Servicios y Tecnologías que Facilitan Tu Vida"
         />
       </div>
-      <CardHome />
-      <RedesHome />
+      <CardSobre />
+      <RedesSobre />
       <Contacto />
       <Footer />
     </div>
   );
 }
 
-export default Home;
+export default Sobre;
