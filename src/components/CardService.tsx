@@ -3,8 +3,6 @@ import { obtenerServicios } from "../validation/Services";
 
 function CardService() {
 
-    const tokens = localStorage.getItem("ACCESS_TOKEN");
-
     const [service, setServices] = useState<
         { id: number; name: string; categories: string; description: string, linkImagen: string }[]
     >([]);
@@ -63,24 +61,13 @@ function CardService() {
                             </div>
                             <p className="text-white"> {ser.description}</p>
                             <div className="flex items-center justify-between">
-                                {tokens ? (
-                                    <a target="_blank" href={`https://api.whatsapp.com/send?phone=18098820434&text=Hola solícito el servicio de ${ser.name}.`}>
-                                        <div
-                                            className="cursor-pointer text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
-                                        >
-                                            Solicitar
-                                        </div>
-                                    </a>
-                                ) : (
-                                    <a href="/woody-sesion">
-                                        <div
-                                            className="cursor-pointer text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
-                                        >
-                                            Solicitar
-                                        </div>
-                                    </a>
-                                )}
-
+                                <a href="https://api.whatsapp.com/send?phone=18098820434" target="_blank">
+                                    <div
+                                        className="cursor-pointer text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
+                                    >
+                                        Solicitar
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
