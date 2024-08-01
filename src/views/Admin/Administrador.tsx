@@ -52,7 +52,7 @@ function Adminstrador() {
                                     ></path>
                                 </svg>
                             </button>
-                            <Link to="/" className="flex ml-2 md:mr-24">
+                            <Link to="/woody-users-administrador" className="flex ml-2 md:mr-24">
                                 <img
                                     src="https://res.cloudinary.com/dol6yfeoi/image/upload/v1711907259/unnamed_qmk5pe.png"
                                     className="h-8 mr-3"
@@ -60,7 +60,7 @@ function Adminstrador() {
                                 />
                                 <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-white">
                                     {" "}
-                                    Woody{" "}
+                                    Wjacques{" "}
                                 </span>
                             </Link>
                         </div>

@@ -29,6 +29,7 @@ import CategoriesAd from "../views/Admin/Categories";
 const router = createBrowserRouter([
 
   // Rutas de cliente
+  { path:"/", element: <Product /> },
   { path:"/woody-product-users", element: <Product /> },
   { path:"/woody-course-users", element: <Course /> },
   { path:"/woody-services-users", element: <Services /> },
